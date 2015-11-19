@@ -1,12 +1,13 @@
 package app.parser;
 
 
-import java.util.HashMap;
+import com.google.inject.Injector;
+
 import java.util.Map;
 
-public abstract class BaseStep implements IStep {
+public abstract class BaseStep implements ParseStep {
 
-    Map<String, Object> pluginConfig = new HashMap<>();
+    protected Injector injector;
 
     @Override
     public Map<String, Object> preProcess(Map<String, Object> data) { return data; }
@@ -16,13 +17,4 @@ public abstract class BaseStep implements IStep {
         return data;
     }
 
-    @Override
-    public Map<String, Object> config() {
-        return pluginConfig;
-    }
-
-    @Override
-    public void setConfig(Map<String, Object> config) {
-        pluginConfig = config;
-    }
 }

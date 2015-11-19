@@ -18,6 +18,11 @@ public class GetPage extends BaseStep {
     }
 
     @Override
+    public void initialize(Map<String, Object> config) {
+
+    }
+
+    @Override
     public Map<String, Object> processStep(Map<String, Object> data) {
         String url = (java.lang.String) data.get(DataParameters.URL);
 
@@ -32,17 +37,4 @@ public class GetPage extends BaseStep {
         return data;
     }
 
-    @Override
-    public Map<String, Object> preProcess(Map<String, Object> data) {
-        return data;
-    }
-
-    @Override
-    public Map<String, Object> postProcess(Map<String, Object> data) {
-        return data;
-    }
-
-    private void extractParameters(Map<String, Object> data){
-
-    }
 }
