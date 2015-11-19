@@ -15,6 +15,6 @@ public class HomeController extends AppController {
         }else{
             System.out.println(step.errors());
         }
-        view("index",null);
+        redirect(HomeController.class);
     }
 }
