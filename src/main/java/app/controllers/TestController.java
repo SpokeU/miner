@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.guice.AppInjector;
 import app.guice.MessageService;
+import app.guice.SomeService;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.javalite.activeweb.AppController;
@@ -18,6 +19,9 @@ public class TestController extends AppController {
     @Inject
     private MessageService emailService;
 
+    @Inject
+    private SomeService someService;
+
     @GET
     public void guiceTest() {
         Injector injector = Guice.createInjector(new AppInjector());
@@ -26,6 +30,8 @@ public class TestController extends AppController {
 
         app.sendMessage("Hi Pankaj", "pankaj@abc.com");
         emailService.sendMessage("Gogogo", "omy@gmail.com");
+
+        someService.doStuff();
     }
 
 }

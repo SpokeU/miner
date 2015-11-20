@@ -1,11 +1,11 @@
-package app.parser;
+package app.parser.step;
 
 
 import com.google.inject.Injector;
 
 import java.util.Map;
 
-public abstract class BaseStep implements ParseStep {
+public abstract class AbstractStepProcessor implements StepProcessor {
 
     protected Injector injector;
 

@@ -1,6 +1,6 @@
-package app.parser.step;
+package app.parser.step.processors;
 
-import app.parser.BaseStep;
+import app.parser.step.AbstractStepProcessor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 /**
  * Created by Issen on 15.11.2015.
  */
-public class ElementIterator extends BaseStep {
+public class ElementIterator extends AbstractStepProcessor {
 
     public static class ConfigurationParameters {
         public static String SELECTOR = "SELECTOR";

@@ -1,28 +1,25 @@
 package app.parser.step;
 
-import app.parser.BaseStep;
-import app.parser.ParseStep;
 import app.parser.models.Step;
 import app.parser.models.StepConfig;
 
+import javax.inject.Singleton;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by Issen on 19.11.2015.
- */
-public class StepFactory {
+@Singleton
+public class StepProcessorFactory {
 
-    List<ParseStep> getStepsForJob(Long jobId) {
+    public List<StepProcessor> getStepProcessorsForJob(Long jobId) {
         List<Step> steps = Step.findStepsForJob();
-        List<ParseStep> parseSteps = steps.stream().map(s -> createParseStep(s)).collect(Collectors.toList());
-        return parseSteps;
+        List<StepProcessor> stepProcessors = steps.stream().map(s -> createParseStep(s)).collect(Collectors.toList());
+        return stepProcessors;
     }
 
-    public ParseStep createParseStep(Step model) {
-        BaseStep step = createStepInstance(model.getClazz());
+    public StepProcessor createParseStep(Step model) {
+        AbstractStepProcessor step = createStepInstance(model.getClazz());
         Map<String, Object> configMap = model.getConfig().stream().collect(Collectors.toMap(StepConfig::getName, StepConfig::getValue));
         step.initialize(configMap);
         return step;

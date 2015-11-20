@@ -1,6 +1,6 @@
-package app.parser.step;
+package app.parser.step.processors;
 
-import app.parser.BaseStep;
+import app.parser.step.AbstractStepProcessor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Issen on 15.11.2015.
  */
-public class GetPage extends BaseStep {
+public class GetPage extends AbstractStepProcessor {
 
     public static class DataParameters {
         public static String URL = "URL";

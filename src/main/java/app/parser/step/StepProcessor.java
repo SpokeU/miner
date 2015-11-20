@@ -1,9 +1,11 @@
-package app.parser;
-
+package app.parser.step;
 
 import java.util.Map;
 
-public interface ParseStep {
+/**
+ * Created by Issen on 20.11.2015.
+ */
+public interface StepProcessor {
 
     public void initialize(Map<String, Object> config);
 

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Step extends Model {
 
-    public static final String build_id = "build_id";
+    public static final String parse_job_id = "parse_job_id";
 
     public Long id;
     public String name;

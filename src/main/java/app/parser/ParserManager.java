@@ -1,7 +1,11 @@
 package app.parser;
 
 import app.parser.models.Step;
+import app.parser.step.StepProcessor;
+import app.parser.step.StepProcessorFactory;
+import app.parser.step.StepsExecutor;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -9,8 +13,16 @@ import java.util.List;
  */
 public class ParserManager {
 
-    public void executeJob(Long buildId){
-        List<Step> steps = Step.where(Step.build_id + " = ? order by order", buildId);
+    @Inject
+    private StepProcessorFactory stepProcessorFactory;
+
+    @Inject
+    private StepsExecutor stepsExecutor;
+
+    public void executeJob(Long jobId){
+        List<Step> steps = Step.where(Step.parse_job_id + " = ? order by order", jobId);
+        List<StepProcessor> stepProcessors = stepProcessorFactory.getStepProcessorsForJob(jobId);
+        stepsExecutor.processSteps(stepProcessors);
     }
 
 }
