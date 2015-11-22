@@ -1,7 +1,7 @@
 package app.parser.step;
 
 import app.parser.models.Step;
-import app.parser.models.StepConfig;
+import app.parser.models.StepConfiguration;
 
 import javax.inject.Singleton;
 import java.lang.reflect.InvocationTargetException;
@@ -13,19 +13,19 @@ import java.util.stream.Collectors;
 public class StepProcessorFactory {
 
     public List<StepProcessor> getStepProcessorsForJob(Long jobId) {
-        List<Step> steps = Step.findStepsForJob();
+        List<Step> steps = Step.findStepsForJob(jobId);
         List<StepProcessor> stepProcessors = steps.stream().map(s -> createParseStep(s)).collect(Collectors.toList());
         return stepProcessors;
     }
 
-    public StepProcessor createParseStep(Step model) {
-        AbstractStepProcessor step = createStepInstance(model.getClazz());
-        Map<String, Object> configMap = model.getConfig().stream().collect(Collectors.toMap(StepConfig::getName, StepConfig::getValue));
-        step.initialize(configMap);
-        return step;
+    public StepProcessor createParseStep(Step step) {
+        AbstractStepProcessor stepProcessor = createStepProcessor(step.getClazz());
+        Map<String, Object> configMap = step.getConfig().stream().collect(Collectors.toMap(StepConfiguration::getName, StepConfiguration::getValue));
+        stepProcessor.initialize(configMap);
+        return stepProcessor;
     }
 
-    private <T> T createStepInstance(String clazz) {
+    private <T> T createStepProcessor(String clazz) {
         T step = null;
         try {
             step = (T) Class.forName(clazz).getConstructors()[0].newInstance();

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 @Singleton
-public class StepsExecutor {
+public class StepProcessorExecutor {
 
     public void processSteps(List<? extends StepProcessor> stepProcessors){
         Map<String, Object> processData = Maps.newHashMap();
