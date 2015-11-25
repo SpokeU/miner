@@ -37,18 +37,20 @@ CREATE TABLE step_configurations
 );
 
 --DROP all tables
-DROP TABLE step_configurations;
-DROP TABLE steps;
-DROP TABLE jobs;
-DROP TABLE projects;
+--DROP TABLE step_configurations;
+--DROP TABLE steps;
+--DROP TABLE jobs;
+--DROP TABLE projects;
 
 
 -- DATA
  --Project
-INSERT INTO projects (id ,name, description) VALUES (1, 'Parse ROZETKA', 'project for retrieving data from rozetka');
+INSERT INTO projects (id ,name, description) VALUES (1, 'ROZETKA', 'project for retrieving data from rozetka');
+INSERT INTO projects (id ,name, description) VALUES (2, 'Deshevshe', 'project for retrieving data from rozetka');
 
  --Job
-INSERT INTO jobs (id ,name, status, project_id) VALUES (1, 'Parse ROZETKA', 'INACTIVE', 1);
+INSERT INTO jobs (id ,name, status, project_id) VALUES (1, 'Parse main page', 'INACTIVE', 1);
+INSERT INTO jobs (id ,name, status, project_id) VALUES (2, 'Get categories', 'INACTIVE', 2);
 
 --steps
 INSERT INTO steps (id, name, description, clazz, step_order, job_id)
