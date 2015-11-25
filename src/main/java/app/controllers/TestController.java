@@ -4,6 +4,8 @@ import app.guice.AppInjector;
 import app.guice.MessageService;
 import app.guice.SomeService;
 import app.parser.ParserManager;
+import app.parser.models.Job;
+import app.parser.models.Project;
 import app.parser.models.Step;
 import app.parser.models.StepConfiguration;
 import com.google.inject.Guice;
@@ -49,10 +51,8 @@ public class TestController extends AppController {
     @GET
     public void testQuery(){
         List<Step> steps = Step.where(Step.parse_job_id + " = ? order by step_order", 1L).include(StepConfiguration.class);
-        System.out.println(steps);
-        System.out.println(steps.get(1).getAll(StepConfiguration.class));
-        List<StepConfiguration> conf = StepConfiguration.findAll();
-        System.out.println(conf);
+        System.out.println(Step.where(Step.parse_job_id + " = ? order by step_order", 1L).include(StepConfiguration.class).toSql());
+        System.out.println(Project.where("id = ?", 1L).include(Job.class));
     }
 
 }

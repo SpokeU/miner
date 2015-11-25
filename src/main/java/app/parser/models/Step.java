@@ -6,13 +6,8 @@ import java.util.List;
 
 public class Step extends Model {
 
-    public static final String parse_job_id = "parse_job_id";
+    public static final String parse_job_id = "job_id";
 
-    public Long id;
-    public String name;
-    public String description;
-    public String clazz;
-    public Integer order;
 
     public String getClazz(){
         return getString("clazz");
