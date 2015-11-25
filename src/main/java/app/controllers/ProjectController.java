@@ -4,6 +4,7 @@ import app.parser.models.Job;
 import app.parser.models.Project;
 import app.parser.models.Step;
 import org.javalite.activeweb.AppController;
+import org.javalite.activeweb.annotations.GET;
 
 import java.util.List;
 
@@ -21,5 +22,10 @@ public class ProjectController extends AppController {
 			view("project", project);
 			render("project");
 		}
+	}
+
+	@GET
+	public void newProject(){
+
 	}
 }
