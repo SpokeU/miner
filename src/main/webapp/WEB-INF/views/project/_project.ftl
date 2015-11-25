@@ -7,7 +7,7 @@
             </a>
             <span class="project-name h4"><a href="/project?projectId=${project.id}">${project.name}</a></span>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="dropdown pull-right">
                 <a class="dropdown-toggle" type="button" href="dropdownMenu1" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="true">
@@ -23,16 +23,11 @@
             </div>
 
         </div>
-
-
     </div>
 
-    <div class="row row-margin">
-        <div class="collapse" id="project-${project.id}">
-
-        <#list project.jobs as job>
-            <p>${job.id}</p>
-        </#list>
+    <div class="collapse" id="project-${project.id}">
+        <div class="project-jobs">
+            <@render partial="/job/job" collection=project.jobs spacer="spacer"></@render>
         </div>
     </div>
 </div>

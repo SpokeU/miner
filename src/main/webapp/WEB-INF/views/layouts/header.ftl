@@ -17,7 +17,7 @@
 		            <li><a href="#">Project1</a></li>
 		            <li><a href="#">Project2</a></li>
 		            <li class="divider"></li>
-		            <li><@link_to controller="project" action="projectsList">All projects</@></li>
+		            <li><@link_to controller="project">All projects</@></li>
 		          </ul>
 		        </li>
             </ul>
