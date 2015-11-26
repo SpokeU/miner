@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row project-container">
         <div class="col-md-8">
             <a role="button" data-toggle="collapse" href="#project-${project.id}" aria-expanded="false"
                aria-controls="project-${project.id}">

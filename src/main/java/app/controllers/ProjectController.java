@@ -5,9 +5,12 @@ import app.parser.models.Project;
 import app.parser.models.Step;
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.GET;
+import org.javalite.activeweb.annotations.POST;
+import org.javalite.activeweb.annotations.RESTful;
 
 import java.util.List;
 
+@RESTful
 public class ProjectController extends AppController {
 
 	public void index() {
@@ -15,7 +18,7 @@ public class ProjectController extends AppController {
 		if (projectId == null) {
 			view("projects", Project.findAll().include(Job.class));
 			render("projectsList");
-		}else{
+		} else {
 			Project project = (Project) Project.where("id = ?", Long.parseLong(projectId)).include(Job.class).get(0);
 			List<Job> jobs = project.getAll(Job.class);
 			System.out.println(jobs.get(0).getAll(Step.class));
@@ -23,9 +26,17 @@ public class ProjectController extends AppController {
 			render("project");
 		}
 	}
+	
+	public void show(){
+		System.out.println("aaaaaaaaaaaaaaa");
+	}
 
 	@GET
-	public void newProject(){
+	public void create() {
+	}
+
+	@POST
+	public void createProject() {
 
 	}
 }

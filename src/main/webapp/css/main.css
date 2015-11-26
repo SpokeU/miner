@@ -23,6 +23,11 @@ html, body{
     margin-bottom:10px;
 }
 
+.project-container{
+	background-color: #eaeaea;
+	padding: 4px 3px;
+}
+
 .project-name {
     margin-left: 5px;
 }
