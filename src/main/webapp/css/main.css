@@ -23,6 +23,10 @@ html, body{
     margin-bottom:10px;
 }
 
+.row-grid {
+    margin-top: 15px;
+}
+
 .project-container{
 	background-color: #eaeaea;
 	padding: 4px 3px;

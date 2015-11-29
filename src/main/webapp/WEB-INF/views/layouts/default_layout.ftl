@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="${context_path}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${context_path}/css/bootstrap-orig.min.css" rel="stylesheet">
     <LINK href="${context_path}/css/main.css" rel="stylesheet" type="text/css"/>
     <script src="${context_path}/js/jquery.min.js"></script>
     <script src="${context_path}/js/bootstrap.min.js"></script>

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-8">
-    <@form controller="project" method="post" class="form-horizontal">
+    <@form controller="projects" method="post" class="form-horizontal">
         <div class="form-group">
             <label for="job_name" class="col-sm-2 control-label">Name</label>
 
@@ -25,23 +25,4 @@
         </div>
     </@form>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4 col-md-offset-1">
-        <button class="btn btn-sm">Add Job</button>
-    </div>
-    <table>
-        <thead>
-        <tr>
-            <th>Job Name</th>
-            <th>Job Steps</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>...</td>
-            <td>...</td>
-        </tr>
-        </tbody>
-    </table>
 </div>

@@ -5,7 +5,7 @@
                aria-controls="project-${project.id}">
                 <span class="glyphicon glyphicon-menu-right text-warning" aria-hidden="true">
             </a>
-            <span class="project-name h4"><a href="/project/${project.id}">${project.name}</a></span>
+            <span class="project-name h4"><a href="/projects/${project.id}">${project.name}</a></span>
         </div>
 
     <#-- DROPDOWN menu -->
@@ -16,12 +16,8 @@
                     <span class="glyphicon glyphicon-cog" aria-hidden="true">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Edit config</a></li>
-                    <li>
-                    <@form controller="project" method="delete" id=project.id>
-                        <input type="hidden" name="id" value="${project.id}"/>
-                        <button type="submit" class="btn-link">delete</button>
-                    </@form>
+                    <li><a href="/projects/editForm/${project.id}">Edit config</a></li>
+                    <li><a href="/projects/delete/${project.id}">Delete</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Separated link</a></li>

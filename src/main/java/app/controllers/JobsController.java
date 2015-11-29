@@ -4,7 +4,7 @@ import org.javalite.activeweb.AppController;
 
 import app.parser.models.Job;
 
-public class JobController extends AppController {
+public class JobsController extends AppController {
 
 	public void index() {
 		String jobId = param("jobId");
