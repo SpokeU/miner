@@ -1,0 +1,18 @@
+{
+  "steps": [
+    {
+      "name": "Get page",
+      "key": "get_page"
+      /* TODO implement optional config
+      "processor_class":"app.parser.step.processors.GetPage",
+      "configurator_class":"app.parser.step.configurators.GetPageConfigurator",
+      "view_template":"steps/getPage/view.ftl",
+      "edit_template":"steps/getPage/edit.ftl",
+      "new_template":"steps/getPage/new.ftl"*/
+    },
+    {
+      "name":"Element Iterator",
+      "key":"element_iterator"
+    }
+  ]
+}

@@ -14,18 +14,18 @@ public class StepProcessorFactory {
 
     public List<StepProcessor> getStepProcessorsForJob(Long jobId) {
         List<Step> steps = Step.findStepsForJob(jobId);
-        List<StepProcessor> stepProcessors = steps.stream().map(s -> createParseStep(s)).collect(Collectors.toList());
+        List<StepProcessor> stepProcessors = steps.stream().map(s -> createStepProcessor(s)).collect(Collectors.toList());
         return stepProcessors;
     }
 
-    public StepProcessor createParseStep(Step step) {
-        AbstractStepProcessor stepProcessor = createStepProcessor(step.getClazz());
+    public StepProcessor createStepProcessor(Step step) {
+        AbstractStepProcessor stepProcessor = createStepProcessorInstance(step.getClazz());
         Map<String, Object> configMap = step.getConfig().stream().collect(Collectors.toMap(StepConfiguration::getName, StepConfiguration::getValue));
         stepProcessor.initialize(configMap);
         return stepProcessor;
     }
 
-    private <T> T createStepProcessor(String clazz) {
+    private <T> T createStepProcessorInstance(String clazz) {
         T step = null;
         try {
             step = (T) Class.forName(clazz).getConstructors()[0].newInstance();

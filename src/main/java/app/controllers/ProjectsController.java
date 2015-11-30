@@ -22,7 +22,6 @@ public class ProjectsController extends AppController {
 
     @POST
     public void create() {
-        System.out.print("--------------Creating------------");
         Project p = new Project();
         p.fromMap(params1st());
         p.save();
