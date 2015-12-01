@@ -1,6 +1,8 @@
 package app.controllers;
 
-public class StepsController {
+import org.javalite.activeweb.AppController;
+
+public class StepsController extends AppController{
 
     public void editForm(){
 
