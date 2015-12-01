@@ -21,8 +21,9 @@
 
             <div class="col-sm-10">
                 <select name="step_name" class="form-control">
-                	<option value="get_page">Get page</option>
-                	<option value="element_iterator">Element iterator</option>
+                    <#list steps as step>
+                        <option value="${step.key}">${step.name}</option>
+                    </#list>
                 </select>
             </div>
         </div>
