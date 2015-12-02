@@ -1,20 +1,21 @@
 package app.parser.step.configurators;
 
-import app.parser.step.StepConfigurator;
-import app.parser.step.processors.GetPage;
-
 import java.util.Map;
 
-public class GetPageConfigurator implements StepConfigurator{
+import javax.inject.Inject;
 
-    @Override
-    public Class processorClass() {
-        return GetPage.class;
-    }
+import app.guice.MessageService;
+import app.parser.step.StepConfigurator;
+
+public class GetPageConfigurator implements StepConfigurator{
+	
+	@Inject
+	private MessageService messageService;
 
     @Override
     public void populateViewParameters(Map<String, String> viewParams) {
-        
+    	viewParams.put("mymessage", "Hello message from super service");
+    	messageService.sendMessage("Injection working", "System");
     }
 
     @Override

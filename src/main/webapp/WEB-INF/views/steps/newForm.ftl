@@ -33,3 +33,6 @@
             </div>
         </div>
     </@form>
+    
+    <@link_to controller="steps" action="getStepConfigurationTemplate" destination="result">Get Books</@>
+    <div id="result"></div>

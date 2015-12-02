@@ -1,24 +1,26 @@
 package app.parser;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Modules {
 
     private static JSONParser parser = new JSONParser();
 
-    public static List<StepConfig> steps = new ArrayList();
+    public static List<StepConfig> steps = new ArrayList<StepConfig>();
 
-    public static Function<JSONObject, StepConfig> transform = stepJson -> {
+    public static Function<JSONObject, StepConfig> transformStepJson = stepJson -> {
         return new StepConfig(stepJson);
     };
 
@@ -27,11 +29,7 @@ public class Modules {
         try {
             JSONObject modulesJson = (JSONObject) parser.parse(new FileReader(modulesFile));
             JSONArray stepsJson = (JSONArray) modulesJson.get("steps");
-
-            for(Object object : stepsJson){
-                JSONObject stepJson = (JSONObject) object;
-                steps.add(new StepConfig(stepJson));
-            }
+			parseSteps(stepsJson);
         } catch (IOException e) {
             //problems with loading file
             e.printStackTrace();
@@ -43,6 +41,12 @@ public class Modules {
 
     public static void refresh() {
 
+    }
+    
+    public static void parseSteps(JSONArray stepsJson){
+    	Stream<StepConfig> s = stepsJson.stream().map(transformStepJson);
+    	steps = s.collect(Collectors.toList());
+    	System.out.println("Parsed steps:" + steps);
     }
 
 
