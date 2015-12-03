@@ -43,10 +43,14 @@ public class Modules {
 
     }
     
-    public static void parseSteps(JSONArray stepsJson){
+    private static void parseSteps(JSONArray stepsJson){
     	Stream<StepConfig> s = stepsJson.stream().map(transformStepJson);
     	steps = s.collect(Collectors.toList());
     	System.out.println("Parsed steps:" + steps);
+    }
+    
+	public static StepConfig step(String stepKey){
+    	return steps.stream().filter(s -> s.getKey().equals(stepKey)).findFirst().get();
     }
 
 

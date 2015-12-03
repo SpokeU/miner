@@ -1,18 +1,19 @@
 package app.parser.step;
 
-import app.guice.AppInjector;
-import app.parser.Modules;
-import app.parser.Modules.StepConfig;
-import com.google.inject.Guice;
-import org.javalite.activeweb.Configuration;
-import org.javalite.activeweb.TemplateManager;
-import org.javalite.common.Inflector;
-
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.javalite.activeweb.Configuration;
+import org.javalite.activeweb.TemplateManager;
+import org.javalite.common.Inflector;
+
+import com.google.inject.Guice;
+
+import app.guice.AppInjector;
+import app.parser.Modules;
 
 //Module tempalte renderer
 public class StepTemplateRenderer {
@@ -20,7 +21,7 @@ public class StepTemplateRenderer {
     TemplateManager templateManager = Configuration.getTemplateManager();
 
     public String renderTemplate(String actionName, String stepKey) throws Exception {
-        StepConfigurator configurator = getConfigurator(actionName, stepKey);
+        StepConfigurator configurator = getConfigurator(stepKey);
         String template = getTemplateName(actionName, stepKey);
         Map<String, Object> templateData = getDataForTemplate(configurator, actionName);
 
@@ -40,17 +41,22 @@ public class StepTemplateRenderer {
 
     // TODO implement from config
     private String getTemplateName(String actionName, String stepKey) {
-        StepConfig stepConfig = Modules.steps.stream().filter(s -> s.getKey().equals(stepKey)).findFirst().get();
         String templatePath = "/steps/" + Inflector.camelize(stepKey, false) + "/" + actionName;
         return templatePath;
     }
 
-    //TODO implement get from StepConfig
-    private StepConfigurator getConfigurator(String actionName, String stepKey) throws ClassNotFoundException {
-        String basePackage = "app.parser";
-        String stepsConfiguratorPackage = basePackage + ".step.configurators";
-        String configuratorClassName = stepsConfiguratorPackage + "." + Inflector.camelize(stepKey, true) + "Configurator";
-        Class<StepConfigurator> stepConfiguratorClass = (Class<StepConfigurator>) Class.forName(configuratorClassName).asSubclass(StepConfigurator.class);
+    public StepConfigurator getConfigurator(String stepKey) throws ClassNotFoundException {
+        Class<StepConfigurator> stepConfiguratorClass = getConfiguratorClass(stepKey);
         return Guice.createInjector(new AppInjector()).getInstance(stepConfiguratorClass);
+    }
+    
+    private Class<StepConfigurator> getConfiguratorClass(String stepKey) throws ClassNotFoundException{
+    	String configuratorClass = Modules.step(stepKey).getConfiguratorClass();
+        if(configuratorClass == null){
+        	String basePackage = "app.parser";
+            String stepsConfiguratorPackage = basePackage + ".step.configurators";
+            configuratorClass = stepsConfiguratorPackage + "." + Inflector.camelize(stepKey, true) + "Configurator";
+        }
+		return (Class<StepConfigurator>) Class.forName(configuratorClass).asSubclass(StepConfigurator.class);
     }
 }

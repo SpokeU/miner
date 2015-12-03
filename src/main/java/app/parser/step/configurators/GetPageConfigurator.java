@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import com.google.common.collect.Maps;
+
 import app.guice.MessageService;
 import app.parser.step.StepConfigurator;
 
@@ -27,4 +29,9 @@ public class GetPageConfigurator implements StepConfigurator{
     public void populateCreateParameters(Map<String, String> createParams) {
 
     }
+
+	@Override
+	public Map<String, String> onSave(Map<String, String[]> params) {
+		return Maps.newHashMap();
+	}
 }

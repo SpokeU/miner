@@ -9,5 +9,7 @@ public interface StepConfigurator {
     void populateEditParameters(Map<String, String> editParams);
 
     void populateCreateParameters(Map<String, String> createParams);
+    
+    Map<String, String> onSave(Map<String, String[]> params);
 
 }
