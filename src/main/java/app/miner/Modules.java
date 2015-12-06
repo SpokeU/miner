@@ -18,7 +18,7 @@ public class Modules {
 
     private static JSONParser parser = new JSONParser();
 
-    public static List<StepConfig> steps = new ArrayList<StepConfig>();
+    private static List<ModuleConfig> steps = new ArrayList<>();
 
     public static Function<JSONObject, StepConfig> transformStepJson = stepJson -> {
         return new StepConfig(stepJson);
@@ -49,7 +49,7 @@ public class Modules {
         System.out.println("Parsed steps:" + steps);
     }
 
-    public static StepConfig step(String stepKey) {
+    public static ModuleConfig step(String stepKey) {
         return steps.stream().filter(s -> s.getString(StepConfig.KEY).equals(stepKey)).findFirst().get();
     }
 }
