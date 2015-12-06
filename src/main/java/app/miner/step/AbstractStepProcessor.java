@@ -1,6 +1,7 @@
-package app.parser.step;
+package app.miner.step;
 
 
+import app.miner.api.StepProcessor;
 import com.google.inject.Injector;
 
 import java.util.Map;

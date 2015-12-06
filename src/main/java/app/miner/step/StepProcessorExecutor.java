@@ -1,5 +1,6 @@
-package app.parser.step;
+package app.miner.step;
 
+import app.miner.api.StepProcessor;
 import com.google.common.collect.Maps;
 
 import javax.inject.Singleton;

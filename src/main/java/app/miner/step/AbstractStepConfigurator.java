@@ -1,8 +1,10 @@
-package app.parser.step;
+package app.miner.step;
+
+import app.miner.api.StepConfigurator;
 
 import java.util.Map;
 
-public abstract class AbstractStepConfigurator implements StepConfigurator{
+public abstract class AbstractStepConfigurator implements StepConfigurator {
 
     @Override
     public void populateViewParameters(Map<String, String> viewParams) {

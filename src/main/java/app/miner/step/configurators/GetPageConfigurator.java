@@ -1,13 +1,11 @@
-package app.parser.step.configurators;
-
-import java.util.Map;
-
-import javax.inject.Inject;
-
-import com.google.common.collect.Maps;
+package app.miner.step.configurators;
 
 import app.guice.MessageService;
-import app.parser.step.StepConfigurator;
+import app.miner.api.StepConfigurator;
+import com.google.common.collect.Maps;
+
+import javax.inject.Inject;
+import java.util.Map;
 
 public class GetPageConfigurator implements StepConfigurator{
 	

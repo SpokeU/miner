@@ -1,13 +1,12 @@
 package app.controllers;
 
-import java.util.Map;
-
+import app.miner.Modules;
+import app.miner.api.StepConfigurator;
+import app.miner.step.StepTemplateRenderer;
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
 
-import app.parser.Modules;
-import app.parser.step.StepConfigurator;
-import app.parser.step.StepTemplateRenderer;
+import java.util.Map;
 
 public class StepsController extends AppController{
 

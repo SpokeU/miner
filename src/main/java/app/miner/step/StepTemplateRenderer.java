@@ -1,4 +1,12 @@
-package app.parser.step;
+package app.miner.step;
+
+import app.guice.AppInjector;
+import app.miner.Modules;
+import app.miner.api.StepConfigurator;
+import com.google.inject.Guice;
+import org.javalite.activeweb.Configuration;
+import org.javalite.activeweb.TemplateManager;
+import org.javalite.common.Inflector;
 
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -6,14 +14,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.javalite.activeweb.Configuration;
-import org.javalite.activeweb.TemplateManager;
-import org.javalite.common.Inflector;
-
-import com.google.inject.Guice;
-
-import app.guice.AppInjector;
-import app.parser.Modules;
+import static app.miner.StepConfig.CONFIGURATOR_CLASS;
 
 //Module tempalte renderer
 public class StepTemplateRenderer {
@@ -51,9 +52,9 @@ public class StepTemplateRenderer {
     }
     
     private Class<StepConfigurator> getConfiguratorClass(String stepKey) throws ClassNotFoundException{
-    	String configuratorClass = Modules.step(stepKey).getConfiguratorClass();
+    	String configuratorClass = Modules.step(stepKey).getString(CONFIGURATOR_CLASS);
         if(configuratorClass == null){
-        	String basePackage = "app.parser";
+        	String basePackage = "app.miner";
             String stepsConfiguratorPackage = basePackage + ".step.configurators";
             configuratorClass = stepsConfiguratorPackage + "." + Inflector.camelize(stepKey, true) + "Configurator";
         }

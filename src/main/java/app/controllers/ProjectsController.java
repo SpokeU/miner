@@ -1,7 +1,7 @@
 package app.controllers;
 
-import app.parser.models.Job;
-import app.parser.models.Project;
+import app.miner.models.Job;
+import app.miner.models.Project;
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
 

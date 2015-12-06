@@ -1,7 +1,7 @@
 package app.config;
 
 import app.guice.AppInjector;
-import app.parser.Modules;
+import app.miner.Modules;
 import com.google.inject.Guice;
 import org.javalite.activeweb.AppContext;
 import org.javalite.activeweb.Bootstrap;

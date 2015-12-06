@@ -2,7 +2,7 @@ package app.controllers;
 
 import org.javalite.activeweb.AppController;
 
-import app.parser.models.Job;
+import app.miner.models.Job;
 
 public class JobsController extends AppController {
 

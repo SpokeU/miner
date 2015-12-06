@@ -1,6 +1,6 @@
-package app.parser.step.processors;
+package app.miner.step.processors;
 
-import app.parser.step.AbstractStepProcessor;
+import app.miner.step.AbstractStepProcessor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 

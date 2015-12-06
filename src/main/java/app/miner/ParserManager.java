@@ -1,8 +1,8 @@
-package app.parser;
+package app.miner;
 
-import app.parser.step.StepProcessor;
-import app.parser.step.StepProcessorExecutor;
-import app.parser.step.StepProcessorFactory;
+import app.miner.api.StepProcessor;
+import app.miner.step.StepProcessorExecutor;
+import app.miner.step.StepProcessorFactory;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

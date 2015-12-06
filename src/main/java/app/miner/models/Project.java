@@ -1,4 +1,4 @@
-package app.parser.models;
+package app.miner.models;
 
 import org.javalite.activejdbc.Model;
 

@@ -1,7 +1,8 @@
-package app.parser.step;
+package app.miner.step;
 
-import app.parser.models.Step;
-import app.parser.models.StepConfiguration;
+import app.miner.api.StepProcessor;
+import app.miner.models.Step;
+import app.miner.models.StepConfiguration;
 
 import javax.inject.Singleton;
 import java.lang.reflect.InvocationTargetException;

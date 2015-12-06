@@ -1,4 +1,4 @@
-package app.parser.step;
+package app.miner.api;
 
 import java.util.Map;
 

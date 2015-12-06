@@ -54,9 +54,9 @@ INSERT INTO jobs (id ,name, status, project_id) VALUES (2, 'Get categories', 'IN
 
 --steps
 INSERT INTO steps (id, name, description, clazz, step_order, job_id)
-VALUES (1, 'Get main page', '...', 'app.parser.step.processors.GetPage', 0, 1);
+VALUES (1, 'Get main page', '...', 'app.miner.step.processors.GetPage', 0, 1);
 INSERT INTO steps (id, name, description, clazz, step_order, job_id)
-VALUES (2, 'Iterate through categories', '...', 'app.parser.step.processors.ElementIterator', 1, 1);
+VALUES (2, 'Iterate through categories', '...', 'app.miner.step.processors.ElementIterator', 1, 1);
 
 
 --steps configuration
