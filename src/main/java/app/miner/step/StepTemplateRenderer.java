@@ -14,7 +14,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static app.miner.StepConfig.CONFIGURATOR_CLASS;
+import static app.miner.StepConfig.*;
+
 
 //Module tempalte renderer
 public class StepTemplateRenderer {

@@ -18,7 +18,7 @@ public class Modules {
 
     private static JSONParser parser = new JSONParser();
 
-    private static List<ModuleConfig> steps = new ArrayList<>();
+    public static List<ModuleConfig> steps = new ArrayList<>();
 
     public static Function<JSONObject, StepConfig> transformStepJson = stepJson -> {
         return new StepConfig(stepJson);

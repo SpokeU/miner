@@ -8,6 +8,7 @@ import app.miner.models.Job;
 import app.miner.models.Project;
 import app.miner.models.Step;
 import app.miner.models.StepConfiguration;
+import app.miner.plugin.SimplePluginManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.javalite.activeweb.AppController;
@@ -31,6 +32,9 @@ public class TestController extends AppController {
     @Inject
     private ParserManager parseManager;
 
+    @Inject
+    private SimplePluginManager pluginManager;
+
     @GET
     public void guiceTest() {
         Injector injector = Guice.createInjector(new AppInjector());
@@ -53,6 +57,14 @@ public class TestController extends AppController {
         List<Step> steps = Step.where(Step.parse_job_id + " = ? order by step_order", 1L).include(StepConfiguration.class);
         System.out.println(Step.where(Step.parse_job_id + " = ? order by step_order", 1L).include(StepConfiguration.class).toSql());
         System.out.println(Project.where("id = ?", 1L).include(Job.class));
+    }
+
+    public void loadPlugins(){
+        try {
+            pluginManager.loadPlugin();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
