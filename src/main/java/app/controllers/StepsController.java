@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.miner.Modules;
+import app.miner.plugin.ModulesOld;
 import app.miner.api.StepConfigurator;
 import app.miner.step.StepTemplateRenderer;
 import org.javalite.activeweb.AppController;
@@ -16,7 +16,7 @@ public class StepsController extends AppController{
 
     public void newForm() throws Exception {
     	new StepTemplateRenderer().renderTemplate("view", "get_page");
-        view("steps", Modules.steps);
+        view("steps", ModulesOld.steps);
     }
     
     public void getStepConfigurationTemplate() throws Exception {

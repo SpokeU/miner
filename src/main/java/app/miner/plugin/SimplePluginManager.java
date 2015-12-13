@@ -1,50 +1,51 @@
 package app.miner.plugin;
 
-import app.guice.AppInjector;
-import app.miner.api.StepProcessor;
 import com.google.common.collect.Maps;
-import com.google.inject.Guice;
+import org.apache.commons.io.IOUtils;
+import org.json.simple.parser.ParseException;
 
 import javax.inject.Singleton;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Enumeration;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @Singleton
 public class SimplePluginManager {
 
-    public void loadPlugins() throws IOException {
+    public static String PLUGINS_DIRECTORY = "plugins";
 
-        //load jar
-        //parse plugin.json
-        //validate
-        //load classes
-        //add to modules
+    private Map<String, ClassLoader> pluginClassLoaders = Maps.newConcurrentMap();
+
+    public void loadPlugins() throws IOException, ParseException {
+        for (File pluginJar: getPluginFiles()){
+            loadPlugin(pluginJar);
+        }
     }
 
-    public void loadPlugin() throws IOException, ClassNotFoundException {
-        String pluginPath = "D:\\Development\\JAVA\\Projects\\miner\\plugins\\simpleplugin-1.0-SNAPSHOT.jar";
-        URL[] urls = {new URL("jar:file:" + pluginPath + "!/")};
-        URLClassLoader cl = URLClassLoader.newInstance(urls, getClass().getClassLoader());
-        JarFile jar = new JarFile(pluginPath);
-        Enumeration e = jar.entries();
-        while (e.hasMoreElements()) {
-            JarEntry je = (JarEntry) e.nextElement();
-            if (je.isDirectory() || !je.getName().endsWith(".class")) {
-                continue;
-            }
+    public void loadPlugin(File pluginJar) throws IOException, ParseException {
+        URLClassLoader pluginCl = createClassLoaderForPlugin(pluginJar);
+        String pluginDescriptor = IOUtils.toString(pluginCl.getResourceAsStream("plugin.json"), "UTF-8");
+    }
 
-            String className = je.getName().substring(0, je.getName().length() - 6);
-            className = className.replace('/', '.');
-            Class c = cl.loadClass(className);
+    public URLClassLoader createClassLoaderForPlugin(File pluginFile){
+        URLClassLoader pluginCl = null;
+        try {
+            URL jarUrl = pluginFile.toURI().toURL();
+            pluginCl = URLClassLoader.newInstance(new URL[]{jarUrl}, getClass().getClassLoader());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
+        return pluginCl;
+    }
 
-        Class<StepProcessor> stepConfiguratorClass = (Class<StepProcessor>) Class.forName("com.miner.step.processors.SimpleStepProcessor", true, cl).asSubclass(StepProcessor.class);;
-        StepProcessor conf = Guice.createInjector(new AppInjector()).getInstance(stepConfiguratorClass);
-        conf.processStep(Maps.newHashMap());
+    public List<File> getPluginFiles() {
+        File pluginsDir = new File(PLUGINS_DIRECTORY);
+        return Arrays.asList(pluginsDir.listFiles((dir, name) -> name.endsWith("jar")));
     }
 
 }

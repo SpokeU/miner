@@ -1,7 +1,7 @@
 package app.config;
 
 import app.guice.AppInjector;
-import app.miner.Modules;
+import app.miner.plugin.ModulesOld;
 import com.google.inject.Guice;
 import org.javalite.activeweb.AppContext;
 import org.javalite.activeweb.Bootstrap;
@@ -9,6 +9,6 @@ import org.javalite.activeweb.Bootstrap;
 public class AppBootstrap extends Bootstrap {
     public void init(AppContext context) {
         setInjector(Guice.createInjector(new AppInjector()));
-        Modules.init();
+        ModulesOld.init();
     }
 }

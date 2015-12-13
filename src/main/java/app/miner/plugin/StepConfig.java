@@ -1,4 +1,4 @@
-package app.miner;
+package app.miner.plugin;
 
 import org.json.simple.JSONObject;
 

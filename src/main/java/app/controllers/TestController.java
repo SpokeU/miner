@@ -61,7 +61,7 @@ public class TestController extends AppController {
 
     public void loadPlugins(){
         try {
-            pluginManager.loadPlugin();
+            pluginManager.loadPlugins();
         } catch (Exception e) {
             e.printStackTrace();
         }

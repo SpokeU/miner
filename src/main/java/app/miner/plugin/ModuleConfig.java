@@ -1,4 +1,4 @@
-package app.miner;
+package app.miner.plugin;
 
 import com.google.common.collect.Maps;
 import org.json.simple.JSONObject;
@@ -29,4 +29,20 @@ public abstract class ModuleConfig {
 
     public abstract List<String> keys();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ModuleConfig)) return false;
+
+        ModuleConfig that = (ModuleConfig) o;
+
+        if (!config.equals(that.config)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return config.hashCode();
+    }
 }
