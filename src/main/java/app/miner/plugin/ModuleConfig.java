@@ -1,22 +1,35 @@
 package app.miner.plugin;
 
-import com.google.common.collect.Maps;
-import org.json.simple.JSONObject;
-
-import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+
+import com.google.common.collect.Maps;
 /**
- * Created by Issen on 06.12.2015.
+ * This class represents single module config
+ * {
+      "name":"Element Iterator",
+      "key":"element_iterator"
+    }
  */
-public abstract class ModuleConfig {
+public class ModuleConfig {
+	
+	public static String KEY = "key";
+    public static String NAME = "name";
+    public static String PROCESSOR_CLASS = "processor_class";
+    public static String CONFIGURATOR_CLASS = "configurator_class";
+    public static String VIEW_TEMPLATE = "view_template";
+    public static String EDIT_TEMPLATE = "edit_template";
+    public static String CREATE_TEMPLATE = "create_template";
 
     private Map<String, Object> config = Maps.newHashMap();
+    
+    public String key(){
+    	return getString(KEY);
+    }
 
     public ModuleConfig(JSONObject jsonConfig) {
-        keys().forEach(key -> {
-            config.put(key, jsonConfig.get(key));
-        });
+        config = jsonConfig;
     }
 
     public String getString(String key) {
@@ -26,8 +39,6 @@ public abstract class ModuleConfig {
     public Object get(String key) {
         return config.get(key);
     }
-
-    public abstract List<String> keys();
 
     @Override
     public boolean equals(Object o) {
@@ -45,4 +56,11 @@ public abstract class ModuleConfig {
     public int hashCode() {
         return config.hashCode();
     }
+
+	@Override
+	public String toString() {
+		return config.toString();
+	}
+    
+    
 }

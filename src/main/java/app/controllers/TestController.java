@@ -1,5 +1,21 @@
 package app.controllers;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.javalite.activeweb.AppController;
+import org.javalite.activeweb.annotations.GET;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 import app.guice.AppInjector;
 import app.guice.MessageService;
 import app.guice.SomeService;
@@ -8,14 +24,8 @@ import app.miner.models.Job;
 import app.miner.models.Project;
 import app.miner.models.Step;
 import app.miner.models.StepConfiguration;
+import app.miner.plugin.Plugins;
 import app.miner.plugin.SimplePluginManager;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import org.javalite.activeweb.AppController;
-import org.javalite.activeweb.annotations.GET;
-
-import javax.inject.Inject;
-import java.util.List;
 
 
 /**
@@ -59,12 +69,9 @@ public class TestController extends AppController {
         System.out.println(Project.where("id = ?", 1L).include(Job.class));
     }
 
-    public void loadPlugins(){
-        try {
-            pluginManager.loadPlugins();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void loadPlugins() throws IOException, ParseException{
+       pluginManager.loadPlugins();
+       System.out.println(Plugins.all());
     }
 
 }

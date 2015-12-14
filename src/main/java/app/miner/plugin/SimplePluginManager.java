@@ -1,10 +1,5 @@
 package app.miner.plugin;
 
-import com.google.common.collect.Maps;
-import org.apache.commons.io.IOUtils;
-import org.json.simple.parser.ParseException;
-
-import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -12,14 +7,20 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+
+import javax.inject.Singleton;
+
+import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 @Singleton
 public class SimplePluginManager {
 
     public static String PLUGINS_DIRECTORY = "plugins";
-
-    private Map<String, ClassLoader> pluginClassLoaders = Maps.newConcurrentMap();
+    
+    private JSONParser parser = new JSONParser();
 
     public void loadPlugins() throws IOException, ParseException {
         for (File pluginJar: getPluginFiles()){
@@ -30,6 +31,10 @@ public class SimplePluginManager {
     public void loadPlugin(File pluginJar) throws IOException, ParseException {
         URLClassLoader pluginCl = createClassLoaderForPlugin(pluginJar);
         String pluginDescriptor = IOUtils.toString(pluginCl.getResourceAsStream("plugin.json"), "UTF-8");
+        JSONObject pluginDescriptorJson = (JSONObject) parser.parse(pluginDescriptor);
+        //validate plugin
+        	//check key presence
+        Plugins.add(new PluginInfo(pluginCl, pluginDescriptorJson));
     }
 
     public URLClassLoader createClassLoaderForPlugin(File pluginFile){
