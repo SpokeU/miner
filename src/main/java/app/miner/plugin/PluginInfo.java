@@ -1,13 +1,15 @@
 package app.miner.plugin;
 
-import java.util.Set;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 
-import app.miner.Modules;
+import app.miner.module.ConfigParser;
+import app.miner.module.ModuleConfig;
+import app.miner.module.ModuleType;
 
 public class PluginInfo {
 
@@ -16,7 +18,7 @@ public class PluginInfo {
 	private String basePackage;
 
 	private ClassLoader pluginClassLoader;
-	private Set<ModuleConfig> modules = Sets.newConcurrentHashSet();
+	private List<ModuleConfig> modules = Lists.newArrayList();
 
 	public PluginInfo(ClassLoader pluginClassLoader, String pluginDescriptor) {
 		this.pluginClassLoader = pluginClassLoader;
@@ -35,12 +37,7 @@ public class PluginInfo {
 	}
 
 	private void initModules(JSONObject pluginDescriptor) {
-		for(Modules m: Modules.values()){
-			JSONArray pluginModules = (JSONArray) pluginDescriptor.get(m.name().toLowerCase());
-			if(pluginModules != null){
-				pluginModules.forEach(s -> modules.add(new ModuleConfig((JSONObject) s)));
-			}
-		}
+		modules = ConfigParser.getModules(pluginDescriptor);
 	}
 
 	public String getKey() {
@@ -59,8 +56,17 @@ public class PluginInfo {
 		return pluginClassLoader;
 	}
 
-	public Set<ModuleConfig> getModules() {
+	public List<ModuleConfig> getModules() {
 		return modules;
+	}
+
+	public List<ModuleConfig> getModules(ModuleType moduleType) {
+		return modules.stream().filter(module -> module.getModuleType().equals(moduleType))
+				.collect(Collectors.toList());
+	}
+
+	public List<ModuleConfig> steps() {
+		return modules.stream().filter(m -> m.getModuleType().equals(ModuleType.STEP)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -68,7 +74,5 @@ public class PluginInfo {
 		return "PluginInfo [key=" + key + ", name=" + name + ", basePackage=" + basePackage + ", pluginClassLoader="
 				+ pluginClassLoader + ", modules=" + modules + "]";
 	}
-	
-	
 
 }

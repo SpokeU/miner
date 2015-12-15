@@ -1,12 +1,13 @@
 package app.controllers;
 
-import app.miner.Modules;
-import app.miner.api.StepConfigurator;
-import app.miner.step.StepTemplateRenderer;
+import java.util.Map;
+
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
 
-import java.util.Map;
+import app.miner.api.StepConfigurator;
+import app.miner.module.ModuleType;
+import app.miner.step.StepTemplateRenderer;
 
 public class StepsController extends AppController{
 
@@ -16,7 +17,7 @@ public class StepsController extends AppController{
 
     public void newForm() throws Exception {
     	new StepTemplateRenderer().renderTemplate("view", "get_page");
-        view("steps", Modules.STEPS.all());
+        view("steps", ModuleType.STEP.all());
     }
     
     public void getStepConfigurationTemplate() throws Exception {

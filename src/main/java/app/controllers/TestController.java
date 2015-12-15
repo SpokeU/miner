@@ -1,7 +1,5 @@
 package app.controllers;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
@@ -9,8 +7,6 @@ import javax.inject.Inject;
 
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.GET;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.google.inject.Guice;
@@ -24,6 +20,8 @@ import app.miner.models.Job;
 import app.miner.models.Project;
 import app.miner.models.Step;
 import app.miner.models.StepConfiguration;
+import app.miner.module.ModuleType;
+import app.miner.module.Properties;
 import app.miner.plugin.Plugins;
 import app.miner.plugin.SimplePluginManager;
 
@@ -72,6 +70,9 @@ public class TestController extends AppController {
     public void loadPlugins() throws IOException, ParseException{
        pluginManager.loadPlugins();
        System.out.println(Plugins.all());
+       System.out.println(ModuleType.STEP.all());
+       System.out.println(ModuleType.STEP.get("simple_step"));
+       System.out.println(ModuleType.STEP.get("simple_step").getProperty(Properties.StepProperties.NAME));
     }
 
 }
