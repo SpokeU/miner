@@ -23,7 +23,7 @@ public class ModuleConfig {
 	}
 
 	public ModuleConfig(JSONObject jsonConfig, ModuleType m) {
-		config = jsonConfig;
+		config = jsonConfig;//TODO check this
 		this.moduleType = m;
 	}
 

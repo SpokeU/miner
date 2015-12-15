@@ -1,0 +1,1 @@
+<@render partial="plugin" collection=plugins/>
