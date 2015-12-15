@@ -1,4 +1,4 @@
-package app.miner.step;
+package app.miner.module.step;
 
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;

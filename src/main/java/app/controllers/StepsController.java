@@ -7,7 +7,7 @@ import org.javalite.activeweb.annotations.POST;
 
 import app.miner.api.StepConfigurator;
 import app.miner.module.ModuleType;
-import app.miner.step.StepTemplateRenderer;
+import app.miner.module.step.StepTemplateRenderer;
 
 public class StepsController extends AppController{
 

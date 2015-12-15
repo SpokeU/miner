@@ -1,8 +1,9 @@
-package app.miner.step.processors;
+package app.miner.module.step.processors;
 
-import app.miner.step.AbstractStepProcessor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
+import app.miner.module.step.AbstractStepProcessor;
 
 import java.util.Map;
 import java.util.function.Consumer;

@@ -1,4 +1,4 @@
-package app.miner.step.configurators;
+package app.miner.module.step.configurators;
 
 import app.guice.MessageService;
 import app.miner.api.StepConfigurator;
