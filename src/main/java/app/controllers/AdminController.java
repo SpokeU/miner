@@ -1,13 +1,20 @@
 package app.controllers;
 
-import app.miner.plugin.Plugins;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.FormItem;
 import org.javalite.activeweb.annotations.POST;
 
-import java.util.List;
+import app.miner.plugin.Plugins;
+import app.miner.plugin.SimplePluginManager;
 
 public class AdminController extends AppController {
+	
+	@Inject
+	private SimplePluginManager pluginManager;
 
     public void index() {
     }
@@ -17,11 +24,12 @@ public class AdminController extends AppController {
     }
 
     @POST
-    public void uploadPlugin() {
+    public void uploadPlugin() throws Exception {
         List<FormItem> items = multipartFormItems();
         for (FormItem item : items) {
-            System.out.println(item.getFileName());
+            pluginManager.uploadPlugin(item.getName(), item.getInputStream());
         }
+        redirect(AdminController.class);
     }
 
     @Override

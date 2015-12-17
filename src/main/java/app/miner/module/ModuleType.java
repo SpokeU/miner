@@ -2,7 +2,6 @@ package app.miner.module;
 
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import app.miner.plugin.Plugins;
@@ -20,6 +19,6 @@ public enum ModuleType {
 	}
 
 	public ModuleConfig get(String key) {
-		return all().stream().filter(m -> m.key().equals(key)).findFirst().orElse(null);
+		return all().stream().filter(m -> m.getKey().equals(key)).findFirst().orElse(null);
 	}
 }

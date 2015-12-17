@@ -1,7 +1,7 @@
 <div class="job-container">
 	<div class="row">
-		<div class="col-md-8 h4">
-			<a href="/job?jobId=${job.id}"><span>${job.name}</span></a>
+		<div class="col-md-8">
+			<a class="job-name" href="/job?jobId=${job.id}"><span>${job.name}</span></a>
 		</div>
 		<div class="col-md-4">
 			<a href="/job/edit?jobId=${job.id}"><span>Edit</span></a>

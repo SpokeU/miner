@@ -18,7 +18,7 @@ public class ModuleConfig {
 	private ModuleType moduleType;
 	private Map<String, Object> config = Maps.newHashMap();
 
-	public String key() {
+	public String getKey() {
 		return getProperty(KEY);
 	}
 

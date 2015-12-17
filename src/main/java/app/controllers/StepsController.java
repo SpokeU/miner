@@ -16,7 +16,6 @@ public class StepsController extends AppController{
     }
 
     public void newForm() throws Exception {
-    	new StepTemplateRenderer().renderTemplate("view", "get_page");
         view("steps", ModuleType.STEP.all());
     }
     

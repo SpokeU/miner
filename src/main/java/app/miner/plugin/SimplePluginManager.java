@@ -2,6 +2,7 @@ package app.miner.plugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -11,6 +12,7 @@ import java.util.List;
 import javax.inject.Singleton;
 
 import org.apache.commons.io.IOUtils;
+import org.javalite.common.Util;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -36,6 +38,11 @@ public class SimplePluginManager {
         	//check key presence
         Plugins.add(new PluginInfo(pluginCl, pluginDescriptorJson));
     }
+    
+    public void uploadPlugin(String pluginName, InputStream in) throws IOException, ParseException{
+    	Util.saveTo(new File(PLUGINS_DIRECTORY).getAbsolutePath() + File.separator + pluginName , in);
+    	loadPlugins();
+    }
 
     public URLClassLoader createClassLoaderForPlugin(File pluginFile){
         URLClassLoader pluginCl = null;
@@ -48,6 +55,10 @@ public class SimplePluginManager {
         return pluginCl;
     }
 
+    /**
+     * returns all files with .jar extension in PLUGINS_DIRECTORY folder.
+     * See appConfig.json for PLUGINS_DIRECTORY property
+     */
     public List<File> getPluginFiles() {
         File pluginsDir = new File(PLUGINS_DIRECTORY);
         return Arrays.asList(pluginsDir.listFiles((dir, name) -> name.endsWith("jar")));

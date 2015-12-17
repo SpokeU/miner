@@ -5,7 +5,7 @@
                aria-controls="project-${project.id}">
                 <span class="glyphicon glyphicon-menu-right text-warning" aria-hidden="true">
             </a>
-            <span class="project-name h4"><a href="/projects/${project.id}">${project.name}</a></span>
+            <span class="project-name"><a href="/projects/${project.id}">${project.name}</a></span>
         </div>
 
     <#-- DROPDOWN menu -->

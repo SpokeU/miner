@@ -34,5 +34,5 @@
         </div>
     </@form>
     
-    <@link_to controller="steps" action="getStepConfigurationTemplate" query_string="view_type=view&step_key=get_page" destination="result">Get Books</@>
+    <@link_to controller="steps" action="getStepConfigurationTemplate" query_string="view_type=create&step_key=get_page" destination="result">Get Books</@>
     <div id="result"></div>
