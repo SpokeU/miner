@@ -6,6 +6,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import org.javalite.activeweb.Configuration;
 import org.javalite.activeweb.TemplateManager;
 import org.javalite.common.Inflector;
@@ -15,10 +18,14 @@ import com.google.inject.Guice;
 import app.guice.AppInjector;
 import app.miner.api.StepConfigurator;
 import app.miner.module.ModuleType;
+import app.miner.module.Modules;
 
 
 //Module tempalte renderer
+@Singleton
 public class StepTemplateRenderer {
+	
+	@Inject Modules modules;
 
     TemplateManager templateManager = Configuration.getTemplateManager();
 
@@ -53,7 +60,7 @@ public class StepTemplateRenderer {
     }
     
     private Class<StepConfigurator> getConfiguratorClass(String stepKey) throws ClassNotFoundException{
-    	String configuratorClass = null;ModuleType.STEP.get(stepKey);
+    	String configuratorClass = null;modules.forKey(stepKey);
         if(configuratorClass == null){
         	String basePackage = "app.miner";
             String stepsConfiguratorPackage = basePackage + ".step.configurators";

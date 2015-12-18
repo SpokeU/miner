@@ -1,20 +1,21 @@
 <div class="row">
+<h3>New job</h3>
     <div class="col-md-8">
-    <@form controller="projects" method="post" class="form-horizontal">
+    <@form controller="jobs" method="post" class="form-horizontal">
         <div class="form-group">
-            <label for="project_name" class="col-sm-2 control-label">Name</label>
+            <label for="job_name" class="col-sm-2 control-label">Name</label>
 
             <div class="col-sm-10">
-                <input id="project_name" name="name" type="text" class="form-control"
+                <input id="job_name" name="name" type="text" class="form-control"
                        placeholder="Project name">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="project_description" class="col-sm-2 control-label">Description</label>
+            <label for="job_description" class="col-sm-2 control-label">Description</label>
 
             <div class="col-sm-10">
-                <input id="project_description" name="description" type="text" class="form-control"
+                <input id="job_description" name="description" type="text" class="form-control"
                        placeholder="Project description">
             </div>
         </div>
