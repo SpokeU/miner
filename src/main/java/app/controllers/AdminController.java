@@ -1,11 +1,16 @@
 package app.controllers;
 
-import app.miner.plugin.Plugins;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import app.miner.plugin.SimplePluginManager;
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.FormItem;
 import org.javalite.activeweb.annotations.POST;
 
+import app.miner.plugin.Plugins;
+import app.miner.plugin.SimplePluginManager;
 import javax.inject.Inject;
 import java.util.List;
 
