@@ -1,5 +1,6 @@
 package app.config;
 
+import app.controllers.JobsController;
 import app.controllers.ProjectsController;
 import org.javalite.activeweb.AbstractRouteConfig;
 import org.javalite.activeweb.AppContext;
@@ -19,6 +20,10 @@ public class RouteConfig extends AbstractRouteConfig{
         route("/projects/update").get().to(ProjectsController.class).action("update");
         route("/projects/delete/{id}").get().to(ProjectsController.class).action("delete");
         route("/projects").get().to(ProjectsController.class);
+
+        /* Jobs */
+
+        route("/jobs/new_form").get().to(JobsController.class).action("newForm");
 
     }
 }

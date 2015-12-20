@@ -7,7 +7,7 @@
 
             <div class="col-sm-10">
                 <input id="job_name" name="name" type="text" class="form-control"
-                       placeholder="Project name">
+                       placeholder="Job name">
             </div>
         </div>
 
@@ -16,7 +16,7 @@
 
             <div class="col-sm-10">
                 <input id="job_description" name="description" type="text" class="form-control"
-                       placeholder="Project description">
+                       placeholder="Job description">
             </div>
         </div>
         <div class="form-group">

@@ -29,7 +29,7 @@
 
     <div class="collapse" id="project-${project.id}">
         <div class="project-jobs">
-        <@render partial="/job/job" collection=project.jobs spacer="spacer"></@render>
+        <@render partial="/jobs/job" collection=project.jobs spacer="spacer"></@render>
         </div>
     </div>
 </div>

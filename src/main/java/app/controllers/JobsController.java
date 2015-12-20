@@ -1,8 +1,8 @@
 package app.controllers;
 
-import org.javalite.activeweb.AppController;
-
 import app.miner.models.Job;
+import org.javalite.activeweb.AppController;
+import org.javalite.activeweb.annotations.POST;
 
 public class JobsController extends AppController {
 
@@ -17,7 +17,8 @@ public class JobsController extends AppController {
 	
 	public void newForm() {
     }
-	
+
+	@POST
 	public void create(){
 		String jobId = param("jobId");
 		if(jobId != null){
