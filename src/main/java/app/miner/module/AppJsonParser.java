@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.commons.io.IOUtils;
 import org.javalite.common.Inflector;
@@ -15,7 +14,7 @@ import org.json.simple.parser.ParseException;
 
 import com.google.common.collect.Lists;
 
-public class ConfigParser {
+public class AppJsonParser {
 
 	private static JSONParser parser = new JSONParser();
 

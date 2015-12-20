@@ -29,9 +29,10 @@
     </div>
 </div>
 <hr/>
+<h3>Jobs</h3>
 <div class="row">
     <div class="col-md-4">
-        <button class="btn btn-sm">Add Job</button>
+        <a class="btn btn-default" href="/jobs/new_form">Add Job</a>
     </div>
 </div>
 <div class="row row-grid">

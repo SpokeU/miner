@@ -15,6 +15,9 @@ public class JobsController extends AppController {
 		}
 	}
 	
+	public void newForm() {
+    }
+	
 	public void create(){
 		String jobId = param("jobId");
 		if(jobId != null){

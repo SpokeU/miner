@@ -70,9 +70,9 @@ public class TestController extends AppController {
     public void loadPlugins() throws IOException, ParseException{
        pluginManager.loadPlugins();
        System.out.println(Plugins.all());
-       System.out.println(ModuleType.STEP.all());
+       /*System.out.println(ModuleType.STEP.all());
        System.out.println(ModuleType.STEP.get("simple_step"));
-       System.out.println(ModuleType.STEP.get("simple_step").getProperty(Properties.StepProperties.NAME));
+       System.out.println(ModuleType.STEP.get("simple_step").getProperty(Properties.StepProperties.NAME));*/
     }
 
 }

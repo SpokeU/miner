@@ -2,22 +2,27 @@ package app.controllers;
 
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
 
 import app.miner.api.StepConfigurator;
 import app.miner.module.ModuleType;
+import app.miner.module.Modules;
 import app.miner.module.step.StepTemplateRenderer;
 
 public class StepsController extends AppController{
+	
+	@Inject
+	Modules modules;
 
     public void editForm(){
 
     }
 
     public void newForm() throws Exception {
-    	new StepTemplateRenderer().renderTemplate("view", "get_page");
-        view("steps", ModuleType.STEP.all());
+        view("steps", modules.forType(ModuleType.STEP));
     }
     
     public void getStepConfigurationTemplate() throws Exception {
