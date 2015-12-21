@@ -14,7 +14,7 @@ public class ProjectsController extends AppController {
     public void newForm() {
     }
 
-    public void editForm() {
+    public void editProject() {
         String projectId = getId();
         Project project = Project.findById(Long.parseLong(projectId));
         view("project", project);

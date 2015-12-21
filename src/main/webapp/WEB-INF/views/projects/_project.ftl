@@ -16,7 +16,7 @@
                     <span class="glyphicon glyphicon-cog" aria-hidden="true">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="/projects/editForm/${project.id}">Edit config</a></li>
+                    <li><a href="/projects/editProject/${project.id}">Edit settings</a></li>
                     <li><a href="/projects/delete/${project.id}">Delete</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
