@@ -24,8 +24,7 @@ html, body {
 }
 
 /*============= Projects ===========*/
-
-.project-form label{
+.project-form label {
 	padding-top: 7px;
 	margin-bottom: 0px;
 }
@@ -46,7 +45,6 @@ html, body {
 }
 
 /*============= JOBS ===========*/
-
 .job-name {
 	margin-left: 5px;
 	margin-top: 20px;
@@ -71,7 +69,7 @@ html, body {
 	min-height: 100%;
 	font-size: 100px;
 	text-align: right;
-	filter: alpha(opacity=0);
+	filter: alpha(opacity = 0);
 	opacity: 0;
 	outline: none;
 	background: white;
@@ -79,12 +77,24 @@ html, body {
 	display: block;
 }
 
-/*============= Admin nav ===========*/
+.jobs_table_header {
+	font-size: 15px;
+}
 
+.jobs_table_name {
+	font-size: 15px;
+}
+
+.jobs_table_steps {
+	font-size: 15px;
+}
+
+/*============= Admin nav ===========*/
 .nav-sidebar {
 	width: 100%;
 	padding: 5px 0;
 }
+
 .nav-sidebar a {
 	color: #333;
 	-webkit-transition: all 0.08s linear;
@@ -92,16 +102,18 @@ html, body {
 	-o-transition: all 0.08s linear;
 	transition: all 0.08s linear;
 }
+
 .nav-sidebar .active a {
 	cursor: default;
 	background-color: #0b56a8;
 	color: #fff;
 }
+
 .nav-sidebar .active a:hover {
 	background-color: #E50000;
 }
-.nav-sidebar .text-overflow a,
-.nav-sidebar .text-overflow .media-body {
+
+.nav-sidebar .text-overflow a, .nav-sidebar .text-overflow .media-body {
 	white-space: nowrap;
 	overflow: hidden;
 	-o-text-overflow: ellipsis;

@@ -35,20 +35,23 @@
         <a class="btn btn-default" href="/jobs/new_form"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
     </div>
 </div>
+
 <div class="row row-grid">
-    <div class="col-md-6">
+    <div class="col-md-10">
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Job Name</th>
-                <th>Job Steps</th>
+                <th class="jobs_table_header">Job Name</th>
+                <th class="jobs_table_header">Job Steps</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Parse deshevse</td>
-                <td>get page, parse, eahc</td>
-            </tr>
+            <#list jobs as job>
+	            <tr>
+	                <td class="jobs_table_name">${job.name}</td>
+	                <td class="jobs_table_steps"><#list job.steps as step>${step.name}<#if step_has_next>,</#if> </#list></td>
+	            </tr>
+            </#list>
             </tbody>
         </table>
     </div>

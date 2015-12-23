@@ -1,5 +1,5 @@
 <nav class="nav-sidebar">
-    <h4 class="nav-header">Project settings</h4>
+    <span class="h4 nav-header">Project settings</span>
     <ul class="nav tabs">
         <li><a href="#">General Settings</a></li>
         <li><a href="#">Parameters</a></li>
