@@ -1,8 +1,9 @@
 <div class="row">
 <h3>New job</h3>
     <div class="col-md-8">
-    <@form controller="jobs" method="post" class="form-horizontal">
+    <@form controller="jobs" method="post" class="form-horizontal" action="create">
         <div class="form-group">
+        	<input type="hidden" name="project_id" value="${projectId}"/>
             <label for="job_name" class="col-sm-2 control-label">Name</label>
 
             <div class="col-sm-10">

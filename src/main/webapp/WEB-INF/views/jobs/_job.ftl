@@ -4,7 +4,9 @@
 			<a class="job-name" href="/job?jobId=${job.id}"><span>${job.name}</span></a>
 		</div>
 		<div class="col-md-4">
-			<a href="/job/edit?jobId=${job.id}"><span>Edit</span></a>
+			<a href="/jobs/editJob/${job.id}"><span>Edit</span></a>
+			/
+			<a href="/jobs/delete/${job.id}"><span>Delete</span></a>
 		</div>
 	</div>
 	<div class="row">
@@ -12,7 +14,7 @@
 			<span>#431</span>
 		</div>
 		<div class="col-md-2">
-			<span>${job.status}</span>
+			<span>${job.status!'INACTIVE'}</span>
 		</div>
 		<div class="col-md-2 col-md-offset-3">
 			<span>last run by: John</span>

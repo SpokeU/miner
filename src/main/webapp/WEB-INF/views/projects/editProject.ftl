@@ -32,7 +32,7 @@
 <h4>Jobs</h4>
 <div class="row">
     <div class="col-md-4">
-        <a class="btn btn-default" href="/jobs/new_form"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
+        <a class="btn btn-default" href="/jobs/createJob?projectId=${project.id}"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
     </div>
 </div>
 

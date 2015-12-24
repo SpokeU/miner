@@ -13,7 +13,6 @@ public class RouteConfig extends AbstractRouteConfig{
     public void init(AppContext appContext) {
         route("/projects/new_form").get().to(ProjectsController.class).action("newForm");
         route("/projects/{id}").get().to(ProjectsController.class).action("view");
-        route("/projects/editForm/{id}").get().to(ProjectsController.class).action("editForm");
 
         route("/projects").post().to(ProjectsController.class).action("create");
         route("/projects/{id}").get().to(ProjectsController.class).action("view");
@@ -23,7 +22,7 @@ public class RouteConfig extends AbstractRouteConfig{
 
         /* Jobs */
 
-        route("/jobs/new_form").get().to(JobsController.class).action("newForm");
+        route("/jobs/createJob").get().to(JobsController.class).action("createJob");
 
     }
 }

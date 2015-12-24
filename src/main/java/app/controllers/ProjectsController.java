@@ -31,7 +31,7 @@ public class ProjectsController extends AppController {
         Project p = new Project();
         p.fromMap(params1st());
         p.save();
-        redirect(ProjectsController.class, "editForm", p.get("id"));
+        redirect(ProjectsController.class, "editProject", p.get("id"));
     }
 
     public void view() {
