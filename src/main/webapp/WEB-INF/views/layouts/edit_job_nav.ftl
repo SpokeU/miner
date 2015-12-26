@@ -4,6 +4,7 @@
         <li><a href="#">General Settings</a></li>
         <li><a href="#">Steps</a></li>
         <li><a href="#">Triggers</a></li>
+        <li><a href="#">Dependencies</a></li>
     </ul>
 </nav>
 

@@ -12,7 +12,6 @@ public class RouteConfig extends AbstractRouteConfig{
     @Override
     public void init(AppContext appContext) {
         route("/projects/new_form").get().to(ProjectsController.class).action("newForm");
-        route("/projects/{id}").get().to(ProjectsController.class).action("view");
 
         route("/projects").post().to(ProjectsController.class).action("create");
         route("/projects/{id}").get().to(ProjectsController.class).action("view");
@@ -22,6 +21,7 @@ public class RouteConfig extends AbstractRouteConfig{
 
         /* Jobs */
 
+        route("/jobs/createJob").get().to(JobsController.class).action("createJob");
         route("/jobs/createJob").get().to(JobsController.class).action("createJob");
 
     }

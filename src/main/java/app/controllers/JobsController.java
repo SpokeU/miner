@@ -17,10 +17,15 @@ public class JobsController extends AppController {
 	
 	public void createJob() {
 		view("projectId", param("projectId"));
+		render("create_edit_job");
 		System.out.println("CreateJob");
     }
 	
 	public void editJob(){
+		Long jobId = Long.valueOf(getId());
+		view("job", Job.findById(jobId));
+		view("sidebar", "edit_job_nav.ftl");
+		render("create_edit_job");
 		System.out.println("EditJob");
 	}
 	
@@ -38,7 +43,17 @@ public class JobsController extends AppController {
 		job.fromMap(params1st());
 		job.set("project_id", Integer.parseInt(param("project_id")));
 		job.save();
-		redirect(JobsController.class, "editJob", "1");
+		redirect(JobsController.class, "editJob", job.getId());
+	}
+
+	@POST
+	public void edit(){
+		System.out.println("Post on update");
+		Long jobId = Long.valueOf(param("job_id"));
+		Job job = Job.findById(jobId);
+		job.fromMap(params1st());
+		job.save();
+		redirect(ProjectsController.class);
 	}
 
 	private void jobById(String jobId) {
