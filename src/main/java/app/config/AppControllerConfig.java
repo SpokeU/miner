@@ -1,9 +1,6 @@
 package app.config;
 
-import app.controllers.HomeController;
-import app.controllers.JobsController;
-import app.controllers.ProjectsController;
-import app.controllers.TestController;
+import app.controllers.*;
 import org.javalite.activeweb.AbstractControllerConfig;
 import org.javalite.activeweb.AppContext;
 import org.javalite.activeweb.controller_filters.DBConnectionFilter;
@@ -13,6 +10,6 @@ public class AppControllerConfig extends AbstractControllerConfig {
 
     public void init(AppContext context) {
         addGlobalFilters(new TimingFilter());
-        add(new DBConnectionFilter()).to(HomeController.class, TestController.class, ProjectsController.class, JobsController.class);
+        add(new DBConnectionFilter()).to(HomeController.class, TestController.class, ProjectsController.class, JobsController.class, StepsController.class);
     }
 }

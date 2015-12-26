@@ -1,7 +1,7 @@
 <#assign editing = job??>
 <#assign formAction = editing?string('edit','create')>
 <div class="row">
-    <#if !editing><h3>New job</h3></#if>
+    <#if !editing><p class="lead">New job</p></#if>
     <div class="col-md-8">
     <@form controller="jobs" method="post" class="form-horizontal" action=formAction>
         <div class="form-group">

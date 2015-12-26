@@ -1,21 +1,33 @@
 package app.controllers;
 
-import java.util.Map;
-
-import javax.inject.Inject;
-
-import org.javalite.activeweb.AppController;
-import org.javalite.activeweb.annotations.POST;
-
 import app.miner.api.StepConfigurator;
+import app.miner.models.Step;
 import app.miner.module.ModuleType;
 import app.miner.module.Modules;
 import app.miner.module.step.StepTemplateRenderer;
+import org.javalite.activeweb.AppController;
+import org.javalite.activeweb.annotations.POST;
+
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Map;
 
 public class StepsController extends AppController{
 	
 	@Inject
 	Modules modules;
+
+    public void index(){
+        param("id");
+    }
+
+    public void editSteps(){
+        String jobId = param("jobId");
+        List<Step> steps = Step.where("job_id=?", Long.valueOf(jobId));
+        view("steps", steps);
+        view("jobId", param("jobId"));
+        view("sidebar", "edit_job_nav.ftl");
+    }
 
     public void editForm(){
 

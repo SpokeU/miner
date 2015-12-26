@@ -23,6 +23,7 @@ public class JobsController extends AppController {
 	
 	public void editJob(){
 		Long jobId = Long.valueOf(getId());
+		view("jobId",jobId);
 		view("job", Job.findById(jobId));
 		view("sidebar", "edit_job_nav.ftl");
 		render("create_edit_job");
@@ -56,7 +57,7 @@ public class JobsController extends AppController {
 		redirect(ProjectsController.class);
 	}
 
-	private void jobById(String jobId) {
+	private void jobById(String jobId){
 		Job job = Job.findById(Long.valueOf(jobId));
 		view("job", job);
 		render("job");
