@@ -3,11 +3,10 @@ package app.controllers;
 import app.miner.models.Job;
 import app.miner.models.Project;
 import app.miner.models.Step;
-
-import java.util.List;
-
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
+
+import java.util.List;
 
 public class ProjectsController extends AppController {
 
@@ -24,6 +23,7 @@ public class ProjectsController extends AppController {
         List<Job> jobs = Job.where("project_id = ?", Long.parseLong(projectId)).include(Step.class);
         view("project", project);
         view("jobs", jobs);
+        view("sidebar", "edit_project_nav.ftl");
     }
 
     @POST

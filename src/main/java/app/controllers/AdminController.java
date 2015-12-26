@@ -1,16 +1,11 @@
 package app.controllers;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
+import app.miner.plugin.Plugins;
 import app.miner.plugin.SimplePluginManager;
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.FormItem;
 import org.javalite.activeweb.annotations.POST;
 
-import app.miner.plugin.Plugins;
-import app.miner.plugin.SimplePluginManager;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -20,10 +15,12 @@ public class AdminController extends AppController {
 	private SimplePluginManager pluginManager;
 
     public void index() {
+        view("sidebar", "admin_nav.ftl");
     }
 
     public void plugins() {
         view("plugins", Plugins.all());
+        view("sidebar", "admin_nav.ftl");
     }
 
     @POST
@@ -33,10 +30,5 @@ public class AdminController extends AppController {
             pluginManager.uploadPlugin(item.getName(), item.getInputStream());
         }
         redirect(AdminController.class);
-    }
-
-    @Override
-    protected String getLayout() {
-        return "/layouts/admin_layout";
     }
 }

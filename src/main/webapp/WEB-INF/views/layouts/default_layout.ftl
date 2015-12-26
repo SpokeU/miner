@@ -16,9 +16,21 @@
 
 <div class="container">
 
-${page_content}
+<#if sidebar??>
+    <div class="col-md-2">
+        <#include "${sidebar}">
+    </div>
+    <div class="col-md-10">
+        ${page_content}
+    </div>
+<#else>
+    ${page_content}
+</#if>
 
-</div><!-- /.container -->
+
+
+</div>
+<!-- /.container -->
 
 
 </body>
