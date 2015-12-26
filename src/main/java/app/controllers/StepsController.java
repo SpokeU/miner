@@ -17,6 +17,9 @@ public class StepsController extends AppController{
 	@Inject
 	Modules modules;
 
+    @Inject
+    StepTemplateRenderer templateRendered;
+
     public void index(){
         param("id");
     }
@@ -33,14 +36,15 @@ public class StepsController extends AppController{
 
     }
 
-    public void newForm() throws Exception {
+    public void createStep() throws Exception {
         view("steps", modules.forType(ModuleType.STEP));
     }
     
     public void getStepConfigurationTemplate() throws Exception {
-    	String viewType = param("view_type");//view type
+        System.out.println("rendering");
+    	String viewType = param("view_type");//create,edit,view
         String stepKey = param("step_key");//module_key
-        respond(new StepTemplateRenderer().renderTemplate(viewType, stepKey));
+        respond(templateRendered.renderTemplate(viewType, stepKey));
     }
     
     @POST

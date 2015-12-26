@@ -2,6 +2,8 @@ package app.miner.module;
 
 public class Properties {
 
+	public static final String BASE_PACKAGE = "app.miner";
+
 	public static class StepProperties {
 		public static String KEY = "key";
 		public static String NAME = "name";

@@ -1,15 +1,13 @@
 package app.miner.module;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.inject.Singleton;
-
+import app.miner.AppConfig;
+import app.miner.plugin.Plugins;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import app.miner.AppConfig;
-import app.miner.plugin.Plugins;
+import javax.inject.Singleton;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 public class Modules {
@@ -32,6 +30,6 @@ public class Modules {
 	}
 
 	public ModuleConfig forKey(String moduleKey) {
-		return null;
+		return all().stream().filter(m -> m.getKey().equals(moduleKey)).findFirst().orElse(null);
 	}
 }

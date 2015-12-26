@@ -1,10 +1,6 @@
 package app.miner.module;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.commons.io.IOUtils;
 import org.javalite.common.Inflector;
 import org.json.simple.JSONArray;
@@ -12,9 +8,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.List;
 
-public class AppJsonParser {
+public class ConfigParser {
 
 	private static JSONParser parser = new JSONParser();
 
@@ -36,7 +35,7 @@ public class AppJsonParser {
 
 	private static JSONObject parseConfigFile(URL filePath) {
 		JSONObject jsonConfig = null;
-		try (InputStream configFilestream = filePath.openStream()) {
+		try (InputStream configFileStream = filePath.openStream()) {
 			String configFile = IOUtils.toString(filePath.openStream());
 			jsonConfig = (JSONObject) parser.parse(configFile);
 

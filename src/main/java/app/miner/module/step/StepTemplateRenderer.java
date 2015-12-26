@@ -1,24 +1,21 @@
 package app.miner.module.step;
 
+import app.guice.AppInjector;
+import app.miner.api.StepConfigurator;
+import app.miner.module.Modules;
+import app.miner.module.Properties;
+import com.google.inject.Guice;
+import org.javalite.activeweb.Configuration;
+import org.javalite.activeweb.TemplateManager;
+import org.javalite.common.Inflector;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-import org.javalite.activeweb.Configuration;
-import org.javalite.activeweb.TemplateManager;
-import org.javalite.common.Inflector;
-
-import com.google.inject.Guice;
-
-import app.guice.AppInjector;
-import app.miner.api.StepConfigurator;
-import app.miner.module.ModuleType;
-import app.miner.module.Modules;
 
 
 //Module tempalte renderer
@@ -29,10 +26,10 @@ public class StepTemplateRenderer {
 
     TemplateManager templateManager = Configuration.getTemplateManager();
 
-    public String renderTemplate(String actionName, String stepKey) throws Exception {
+    public String renderTemplate(String viewType, String stepKey) throws Exception {
         StepConfigurator configurator = getConfigurator(stepKey);
-        String template = getTemplateName(actionName, stepKey);
-        Map<String, Object> templateData = getDataForTemplate(configurator, actionName);
+        String template = getTemplateName(viewType, stepKey);
+        Map<String, Object> templateData = getDataForTemplate(configurator, viewType);
 
         StringWriter writer = new StringWriter();
         templateManager.merge(templateData, template, writer);
@@ -40,17 +37,17 @@ public class StepTemplateRenderer {
         return writer.toString();
     }
 
-    private Map<String, Object> getDataForTemplate(StepConfigurator configurator, String actionName) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+    private Map<String, Object> getDataForTemplate(StepConfigurator configurator, String viewType) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
         Map<String, Object> params = new HashMap<>();
-        String populateMethodName = "populate" + Inflector.capitalize(actionName) + "Parameters";
+        String populateMethodName = "populate" + Inflector.capitalize(viewType) + "Parameters";
         Method populateMethod = configurator.getClass().getDeclaredMethod(populateMethodName, Map.class);
         populateMethod.invoke(configurator, params);
         return params;
     }
 
     // TODO implement from config
-    private String getTemplateName(String actionName, String stepKey) {
-        String templatePath = "/steps/" + Inflector.camelize(stepKey, false) + "/" + actionName;
+    private String getTemplateName(String viewType, String stepKey) {
+        String templatePath = "/steps/" + Inflector.camelize(stepKey, false) + "/" + viewType;
         return templatePath;
     }
 
@@ -60,12 +57,16 @@ public class StepTemplateRenderer {
     }
     
     private Class<StepConfigurator> getConfiguratorClass(String stepKey) throws ClassNotFoundException{
-    	String configuratorClass = null;modules.forKey(stepKey);
+    	String configuratorClass = modules.forKey(stepKey).getProperty(Properties.StepProperties.CONFIGURATOR_CLASS);
         if(configuratorClass == null){
-        	String basePackage = "app.miner";
-            String stepsConfiguratorPackage = basePackage + ".step.configurators";
-            configuratorClass = stepsConfiguratorPackage + "." + Inflector.camelize(stepKey, true) + "Configurator";
+            configuratorClass = generateConfiguratorClassName(stepKey);
         }
-		return (Class<StepConfigurator>) Class.forName(configuratorClass).asSubclass(StepConfigurator.class);
+        System.out.println(configuratorClass);
+        return (Class<StepConfigurator>) Class.forName(configuratorClass).asSubclass(StepConfigurator.class);
+    }
+
+    private String generateConfiguratorClassName(String stepKey){
+        String stepsConfiguratorPackage = Properties.BASE_PACKAGE + ".module.step.configurators";
+        return stepsConfiguratorPackage + "." + Inflector.camelize(stepKey, true) + "Configurator";
     }
 }

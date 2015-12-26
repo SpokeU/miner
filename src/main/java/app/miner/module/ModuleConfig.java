@@ -1,10 +1,9 @@
 package app.miner.module;
 
-import java.util.Map;
-
+import com.google.common.collect.Maps;
 import org.json.simple.JSONObject;
 
-import com.google.common.collect.Maps;
+import java.util.Map;
 
 /**
  * This class represents single module config 

@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 
 import com.google.common.collect.Lists;
 
-import app.miner.module.AppJsonParser;
+import app.miner.module.ConfigParser;
 import app.miner.module.ModuleConfig;
 import app.miner.module.ModuleType;
 
@@ -37,7 +37,7 @@ public class PluginInfo {
 	}
 
 	private void initModules(JSONObject pluginDescriptor) {
-		modules = AppJsonParser.getModules(pluginDescriptor);
+		modules = ConfigParser.getModules(pluginDescriptor);
 	}
 
 	public String getKey() {

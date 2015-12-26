@@ -20,12 +20,14 @@ public class GetPageConfigurator implements StepConfigurator{
 
     @Override
     public void populateEditParameters(Map<String, String> editParams) {
-
+        editParams.put("mymessage", "Hello message from super service");
+        messageService.sendMessage("Injection working", "System");
     }
 
     @Override
     public void populateCreateParameters(Map<String, String> createParams) {
-
+        createParams.put("mymessage", "Hello message from super service");
+        messageService.sendMessage("Injection working", "System");
     }
 
 	@Override
