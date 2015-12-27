@@ -8,6 +8,7 @@
     <script src="${context_path}/js/jquery.min.js"></script>
     <script src="${context_path}/js/bootstrap.min.js"></script>
     <script src="${context_path}/js/aw.js" type="text/javascript"></script>
+    <script src="${context_path}/js/miner.js" type="text/javascript"></script>
     <title>ActiveWeb - <@yield to="title"/></title>
 </head>
 <body>

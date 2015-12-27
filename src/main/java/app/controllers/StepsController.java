@@ -41,7 +41,6 @@ public class StepsController extends AppController{
     }
     
     public void getStepConfigurationTemplate() throws Exception {
-        System.out.println("rendering");
     	String viewType = param("view_type");//create,edit,view
         String stepKey = param("step_key");//module_key
         respond(templateRendered.renderTemplate(viewType, stepKey));
@@ -50,7 +49,7 @@ public class StepsController extends AppController{
     @POST
     public void saveStepConfiguration() throws Exception{
     	String stepKey = param("step_key");
-    	StepConfigurator configurator = new StepTemplateRenderer().getConfigurator(stepKey);
+    	StepConfigurator configurator = templateRendered.getConfigurator(stepKey);
     	Map<String, String> paramsToSave = configurator.onSave(params());
     	//transform map to List<StepConfiguration>
     }

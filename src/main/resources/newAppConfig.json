@@ -1,10 +1,12 @@
 {
-  "steps": [
+  "modules": [
     {
+      "type": "step",
       "key": "get_page",
       "name": "Get page"
     },
     {
+      "type": "step",
       "key":"element_iterator",
       "name":"Element Iterator"
     }
