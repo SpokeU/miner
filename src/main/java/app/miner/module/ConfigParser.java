@@ -17,17 +17,17 @@ public class ConfigParser {
 
 	private static JSONParser parser = new JSONParser();
 
-	public static List<ModuleConfig> getModules(URL filePath) {
+	public static List<Module> getModules(URL filePath) {
 		return getModules(parseConfigFile(filePath));
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<ModuleConfig> getModules(JSONObject jsonConfig) {
-		List<ModuleConfig> result = Lists.newArrayList();
+	public static List<Module> getModules(JSONObject jsonConfig) {
+		List<Module> result = Lists.newArrayList();
 		for (ModuleType m : ModuleType.values()) {
 			JSONArray modules = (JSONArray) jsonConfig.get(Inflector.pluralize(m.name().toLowerCase()));
 			if (modules != null) {
-				modules.forEach(module -> result.add(new ModuleConfig((JSONObject) module, m)));
+				modules.forEach(module -> result.add(new Module((JSONObject) module, m)));
 			}
 		}
 		return result;

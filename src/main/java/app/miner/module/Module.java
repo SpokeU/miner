@@ -10,7 +10,7 @@ import java.util.Map;
  * { "name":"Element Iterator",
  * "key":"element_iterator" }
  */
-public class ModuleConfig {
+public class Module {
 
 	public static String KEY = "key";
 
@@ -21,7 +21,7 @@ public class ModuleConfig {
 		return getProperty(KEY);
 	}
 
-	public ModuleConfig(JSONObject jsonConfig, ModuleType m) {
+	public Module(JSONObject jsonConfig, ModuleType m) {
 		config = jsonConfig;//TODO check this
 		this.moduleType = m;
 	}
@@ -55,7 +55,7 @@ public class ModuleConfig {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ModuleConfig other = (ModuleConfig) obj;
+		Module other = (Module) obj;
 		if (config == null) {
 			if (other.config != null)
 				return false;

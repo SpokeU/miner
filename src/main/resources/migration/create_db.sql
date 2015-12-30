@@ -20,7 +20,7 @@ CREATE TABLE steps
   id serial PRIMARY KEY,
   name character varying(255) NOT NULL,
   description character varying(500) DEFAULT '...'::character varying,
-  clazz character varying(255) NOT NULL,
+  step_key character varying(255) NOT NULL,
   step_order integer,
   job_id INT,
   FOREIGN KEY (job_id) REFERENCES jobs(id)
@@ -31,7 +31,6 @@ CREATE TABLE step_configurations
   id serial PRIMARY KEY,
   name character varying(255) NOT NULL,
   value character varying(255) NOT NULL,
-  description character varying(500) DEFAULT '...'::character varying,
   step_id INT,
   FOREIGN KEY (step_id) REFERENCES steps(id)
 );
@@ -53,9 +52,9 @@ INSERT INTO jobs (id ,name, status, project_id) VALUES (1, 'Parse main page', 'I
 INSERT INTO jobs (id ,name, status, project_id) VALUES (2, 'Get categories', 'INACTIVE', 2);
 
 --steps
-INSERT INTO steps (id, name, description, clazz, step_order, job_id)
+INSERT INTO steps (id, name, description, step_key, step_order, job_id)
 VALUES (1, 'Get main page', '...', 'app.miner.step.processors.GetPage', 0, 1);
-INSERT INTO steps (id, name, description, clazz, step_order, job_id)
+INSERT INTO steps (id, name, description, step_key, step_order, job_id)
 VALUES (2, 'Iterate through categories', '...', 'app.miner.step.processors.ElementIterator', 1, 1);
 
 

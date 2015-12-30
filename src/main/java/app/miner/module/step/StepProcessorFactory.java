@@ -1,14 +1,13 @@
 package app.miner.module.step;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.inject.Singleton;
-
 import app.miner.api.StepProcessor;
 import app.miner.models.Step;
 import app.miner.models.StepConfiguration;
+
+import javax.inject.Singleton;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Singleton
 public class StepProcessorFactory {
@@ -27,6 +26,7 @@ public class StepProcessorFactory {
 		return stepProcessor;
 	}
 
+	//TODO inject with Guice
 	private <T> T createStepProcessorInstance(String clazz) {
 		T step = null;
 		try {

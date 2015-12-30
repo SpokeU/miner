@@ -1,26 +1,26 @@
-    <@form controller="steps" method="post" class="form-horizontal">
+    <@form controller="steps" method="post" action="saveStepConfiguration" class="form-horizontal">
         <div class="form-group">
             <label for="step_name" class="col-sm-2 control-label">Name</label>
 
             <div class="col-sm-10">
-                <input id="job_name" name="name" type="text" class="form-control"
+                <input id="step_name" name="name" type="text" class="form-control"
                        placeholder="Project name">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="job_description" class="col-sm-2 control-label">Description</label>
+            <label for="step_description" class="col-sm-2 control-label">Description</label>
 
             <div class="col-sm-10">
                 <input id="step_description" name="description" type="text" class="form-control"
-                       placeholder="Project description">
+                       placeholder="Step description">
             </div>
         </div>
         <div class="form-group">
-            <label for="job_description" class="col-sm-2 control-label">Description</label>
+            <label for="step-select" class="col-sm-2 control-label">Step:</label>
 
             <div class="col-sm-10">
-                <select id="step-select" name="step_name" class="form-control">
+                <select id="step-select" name="step_key" class="form-control">
                     <#list steps as step>
                         <option value="${step.key}">${step.name}</option>
                     </#list>

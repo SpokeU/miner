@@ -1,7 +1,7 @@
 package app.miner;
 
 import app.miner.module.ConfigParser;
-import app.miner.module.ModuleConfig;
+import app.miner.module.Module;
 import app.miner.module.ModuleType;
 import com.google.common.collect.Lists;
 
@@ -13,14 +13,14 @@ public class AppConfig {
 
 	public static final String CONFIG_FILE = "appConfig.json";
 
-	private static List<ModuleConfig> builtInModules = Lists.newArrayList();
+	private static List<Module> builtInModules = Lists.newArrayList();
 
 	static {
 		URL appConfig = ModuleType.class.getClassLoader().getResource(CONFIG_FILE);
 		builtInModules = Collections.unmodifiableList(ConfigParser.getModules(appConfig));
 	}
 
-	public static List<ModuleConfig> getModules() {
+	public static List<Module> getModules() {
 		return builtInModules;
 	}
 

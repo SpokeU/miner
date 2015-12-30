@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 import com.google.common.collect.Lists;
 
 import app.miner.module.ConfigParser;
-import app.miner.module.ModuleConfig;
+import app.miner.module.Module;
 import app.miner.module.ModuleType;
 
 public class PluginInfo {
@@ -18,7 +18,7 @@ public class PluginInfo {
 	private String basePackage;
 
 	private ClassLoader pluginClassLoader;
-	private List<ModuleConfig> modules = Lists.newArrayList();
+	private List<Module> modules = Lists.newArrayList();
 
 	public PluginInfo(ClassLoader pluginClassLoader, String pluginDescriptor) {
 		this.pluginClassLoader = pluginClassLoader;
@@ -56,16 +56,16 @@ public class PluginInfo {
 		return pluginClassLoader;
 	}
 
-	public List<ModuleConfig> getModules() {
+	public List<Module> getModules() {
 		return modules;
 	}
 
-	public List<ModuleConfig> getModules(ModuleType moduleType) {
+	public List<Module> getModules(ModuleType moduleType) {
 		return modules.stream().filter(module -> module.getModuleType().equals(moduleType))
 				.collect(Collectors.toList());
 	}
 
-	public List<ModuleConfig> steps() {
+	public List<Module> steps() {
 		return modules.stream().filter(m -> m.getModuleType().equals(ModuleType.STEP)).collect(Collectors.toList());
 	}
 

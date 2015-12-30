@@ -1,6 +1,5 @@
 package app.controllers;
 
-import app.miner.api.StepConfigurator;
 import app.miner.models.Step;
 import app.miner.module.ModuleType;
 import app.miner.module.Modules;
@@ -13,12 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public class StepsController extends AppController{
-	
-	@Inject
-	Modules modules;
 
     @Inject
-    StepTemplateRenderer templateRendered;
+    StepTemplateRenderer templateRenderer;
 
     public void index(){
         param("id");
@@ -37,20 +33,20 @@ public class StepsController extends AppController{
     }
 
     public void createStep() throws Exception {
-        view("steps", modules.forType(ModuleType.STEP));
+        view("steps", Modules.forType(ModuleType.STEP));
     }
     
     public void getStepConfigurationTemplate() throws Exception {
     	String viewType = param("view_type");//create,edit,view
         String stepKey = param("step_key");//module_key
-        respond(templateRendered.renderTemplate(viewType, stepKey));
+        respond(templateRenderer.renderTemplate(viewType, stepKey));
     }
     
     @POST
     public void saveStepConfiguration() throws Exception{
-    	String stepKey = param("step_key");
-    	StepConfigurator configurator = templateRendered.getConfigurator(stepKey);
-    	Map<String, String> paramsToSave = configurator.onSave(params());
+        Map<String, String[]> stepForm = params();
+        Step.saveStep(stepForm);
+
     	//transform map to List<StepConfiguration>
     }
 
