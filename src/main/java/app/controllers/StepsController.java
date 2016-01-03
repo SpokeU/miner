@@ -34,6 +34,7 @@ public class StepsController extends AppController{
 
     public void createStep() throws Exception {
         view("steps", Modules.forType(ModuleType.STEP));
+        view("jobId", param("jobId"));
     }
     
     public void getStepConfigurationTemplate() throws Exception {

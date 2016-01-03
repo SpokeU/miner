@@ -1,10 +1,11 @@
     <@form controller="steps" method="post" action="saveStepConfiguration" class="form-horizontal">
+        <input type="hidden" name="job_id" value="${jobId}">
         <div class="form-group">
             <label for="step_name" class="col-sm-2 control-label">Name</label>
 
             <div class="col-sm-10">
                 <input id="step_name" name="name" type="text" class="form-control"
-                       placeholder="Project name">
+                       placeholder="Step name">
             </div>
         </div>
 
@@ -36,5 +37,3 @@
             </div>
         </div>
     </@form>
-    
-    <@link_to controller="steps" action="getStepConfigurationTemplate" query_string="view_type=create&step_key=get_page" destination="result">Get Books</@>

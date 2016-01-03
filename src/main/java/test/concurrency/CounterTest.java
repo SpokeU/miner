@@ -8,19 +8,18 @@ public class CounterTest {
 			ct.start();
 		}
 		Thread.sleep(1000);
-
 		System.out.println("Counter:" + counter.getCounter());
 	}
 }
 
 class Counter {
-	private int counter = 0;
+	private volatile long counter = 0;
 
-	public synchronized void increaseCounter() {
+	public void increaseCounter() {
 		counter++;
 	}
 
-	public int getCounter() {
+	public long getCounter() {
 		return counter;
 	}
 }

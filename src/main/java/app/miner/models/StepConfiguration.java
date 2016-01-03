@@ -4,7 +4,6 @@ import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.BelongsTo;
 import org.javalite.activejdbc.annotations.Table;
 
-import java.util.List;
 import java.util.Map;
 
 @Table("step_configurations")
@@ -19,10 +18,17 @@ public class StepConfiguration extends Model {
         return get("value");
     }
 
-    public static List<StepConfiguration> fromInputParams(Map<String, String> map){
+    /**
+     * Saves step config from provided map
+     *
+     * @param map
+     * @return
+     */
+    public static void saveConfig(Long stepId, Map<String, String> map) {
         //TODO implement
-        map.forEach((name, value) -> {System.out.print(name + ":" + value);});
-        return null;
+        map.forEach((name, value) -> {
+            System.out.print(name + ":" + value);
+        });
     }
 
 }

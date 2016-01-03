@@ -10,7 +10,7 @@ CREATE TABLE jobs
   id serial PRIMARY KEY,
   name character varying(255) NOT NULL,
   description character varying(500) DEFAULT '...'::character varying,
-  status character varying(255) DEFAULT 'INACTIVE'::character varying,,
+  status character varying(255) DEFAULT 'INACTIVE'::character varying,
   project_id INT,
   FOREIGN KEY (project_id) REFERENCES projects(id)
 );

@@ -19,7 +19,7 @@ public class StepProcessorFactory {
 	}
 
 	public StepProcessor createStepProcessor(Step step) {
-		AbstractStepProcessor stepProcessor = createStepProcessorInstance(step.getClazz());
+		AbstractStepProcessor stepProcessor = createStepProcessorInstance(step.getKey());
 		Map<String, Object> configMap = step.getConfig().stream()
 				.collect(Collectors.toMap(StepConfiguration::getName, StepConfiguration::getValue));
 		stepProcessor.initialize(configMap);
