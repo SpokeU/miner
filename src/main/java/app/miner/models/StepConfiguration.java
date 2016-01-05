@@ -10,6 +10,9 @@ import java.util.Map;
 @BelongsTo(parent = Step.class, foreignKeyName = "step_id")
 public class StepConfiguration extends Model {
 
+    public enum fields{name, value, step_id}
+
+
     public String getName() {
         return getString("name");
     }
@@ -25,9 +28,12 @@ public class StepConfiguration extends Model {
      * @return
      */
     public static void saveConfig(Long stepId, Map<String, String> map) {
-        //TODO implement
         map.forEach((name, value) -> {
-            System.out.print(name + ":" + value);
+            StepConfiguration stepConfig = new StepConfiguration();
+            stepConfig.set("name", name);
+            stepConfig.set("value", value);
+            stepConfig.set("step_id", stepId);
+            stepConfig.saveIt();
         });
     }
 

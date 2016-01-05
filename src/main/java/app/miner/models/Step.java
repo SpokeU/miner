@@ -44,10 +44,8 @@ public class Step extends Model {
         Step step = new Step();
         step.set("step_key", stepKey).set("name", stepName).set("description", stepDescription).set("job_id", jobId).save();
 
-        //save step with those
         StepConfigurator configurator = StepConfiguratorFactory.forKey(stepKey);
         Map<String, String> configToSave = configurator.onSave(stepForm);
         StepConfiguration.saveConfig(step.getLongId(), configToSave);
-        //StepConfigurator.createStepProcessor
     }
 }
