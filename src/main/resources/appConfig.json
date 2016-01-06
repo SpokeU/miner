@@ -3,6 +3,7 @@
     {
       "key": "get_page",
       "name": "Get page"
+      "processor_class": "app.miner.module.step.processors.GetPage"
     },
     {
       "key":"element_iterator",

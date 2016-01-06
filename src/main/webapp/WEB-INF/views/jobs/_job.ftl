@@ -23,7 +23,7 @@
 			<span>10 hours ago</span>
 		</div>
 		<div class="col-md-2">
-			<button type="button" class="btn btn-primary btn-xs">Run</button>
+			<a href="/jobs/runJob?jobId=${job.id}" class="btn btn-primary btn-xs">Run</a>
 		</div>
 	</div>
 </div>

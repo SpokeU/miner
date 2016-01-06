@@ -3,6 +3,9 @@ package app.miner.module.step;
 import app.miner.api.StepProcessor;
 import app.miner.models.Step;
 import app.miner.models.StepConfiguration;
+import app.miner.module.Module;
+import app.miner.module.Modules;
+import app.miner.module.Properties;
 
 import javax.inject.Singleton;
 import java.util.List;
@@ -19,7 +22,9 @@ public class StepProcessorFactory {
 	}
 
 	public StepProcessor createStepProcessor(Step step) {
-		AbstractStepProcessor stepProcessor = createStepProcessorInstance(step.getKey());
+		Module module = Modules.forKey(step.getKey());
+		String processorClass = module.getProperty(Properties.StepProperties.PROCESSOR_CLASS);
+		AbstractStepProcessor stepProcessor = createStepProcessorInstance(processorClass);
 		Map<String, Object> configMap = step.getConfig().stream()
 				.collect(Collectors.toMap(StepConfiguration::getName, StepConfiguration::getValue));
 		stepProcessor.initialize(configMap);

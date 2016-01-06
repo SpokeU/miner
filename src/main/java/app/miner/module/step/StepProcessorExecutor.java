@@ -20,6 +20,6 @@ public class StepProcessorExecutor {
     public Map<String, Object> processStep(StepProcessor step, Map<String, Object> data){
         Map<String, Object> preProcessData = step.preProcess(data);
         Map<String, Object> processData = step.processStep(preProcessData);
-        return step.postProcess(data);
+        return step.postProcess(processData);
     }
 }

@@ -1,19 +1,16 @@
 package app.controllers;
 
+import app.miner.ParserManager;
 import app.miner.models.Job;
+
+import javax.inject.Inject;
+
 import org.javalite.activeweb.AppController;
 import org.javalite.activeweb.annotations.POST;
 
 public class JobsController extends AppController {
-
-	public void index() {
-		String jobId = param("jobId");
-		if(jobId == null){
-			
-		}else{
-			jobById(jobId);
-		}
-	}
+	
+	@Inject ParserManager parserManager;
 	
 	public void createJob() {
 		view("projectId", param("projectId"));
@@ -56,11 +53,12 @@ public class JobsController extends AppController {
 		job.save();
 		redirect(ProjectsController.class);
 	}
-
-	private void jobById(String jobId){
-		Job job = Job.findById(Long.valueOf(jobId));
-		view("job", job);
-		render("job");
+	
+	public void runJob(){
+		String jobId = param("jobId");
+		System.out.println("running job with id " + jobId);
+		parserManager.executeJob(Long.valueOf(jobId));
+		redirect(ProjectsController.class);
 	}
 
 }
