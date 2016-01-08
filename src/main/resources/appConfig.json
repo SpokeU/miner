@@ -6,9 +6,9 @@
       "name": "Get page",
       "processor_class": "app.miner.module.step.processors.GetPage",
       "configurator_class": "app.miner.module.step.configurators.GetPageConfigurator",
-      "view_template": "/steps/get_page/view.ftl",
-      "edit_template": "/steps/get_page/edit.ftl",
-      "create_template": "/steps/get_page/create.ftl"
+      "view_template": "/steps/get_page/view",
+      "edit_template": "/steps/get_page/edit",
+      "create_template": "/steps/get_page/create"
     },
     {
       "type":"step",
