@@ -38,17 +38,17 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="jobs_table_header">Job Name</th>
-                <th class="jobs_table_header" colspan="2">Job Steps</th>
+                <th class="jobs-table-header">Job Name</th>
+                <th class="jobs-table-header" colspan="2">Job Steps</th>
             </tr>
             </thead>
 
             <#list jobs as job>
             <tr>
-                <td class="jobs_table_name">${job.name}</td>
-                <td class="jobs_table_steps"><#list job.steps as step>${step.name}<#if step_has_next>
+                <td class="jobs-table-name">${job.name}</td>
+                <td class="jobs-table-steps"><#list job.steps as step>${step.name}<#if step_has_next>
                     ,</#if> </#list></td>
-                <td class="jobs_table_name"><a href="/jobs/editJob/${job.id}">Edit</a></td>
+                <td class="jobs-table-name"><a href="/jobs/editJob/${job.id}">Edit</a></td>
             </tr>
             </#list>
             </tbody>

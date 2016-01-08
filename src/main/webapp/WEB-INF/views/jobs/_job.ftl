@@ -11,7 +11,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-1">
-			<span>#431</span>
+			<span>#${job.id}</span>
 		</div>
 		<div class="col-md-2">
 			<span>${job.status!'INACTIVE'}</span>

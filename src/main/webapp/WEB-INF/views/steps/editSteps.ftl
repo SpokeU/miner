@@ -13,8 +13,8 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="jobs_table_header">Step Name</th>
-                <th class="jobs_table_header" colspan="2">Step description</th>
+                <th class="step_table_header">Step Name</th>
+                <th class="step_table_header" colspan="2">Step description</th>
             </tr>
             </thead>
 
@@ -30,8 +30,8 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <li><a href="/steps/editStep/${step.id}">Edit settings</a></li>
-                                <li><a href="/steps/delete/${step.id}">Delete</a></li>
-                                <li><a href="/steps/disable/${step.id}">Disable</a></li>
+                                <li><a href="/steps/delete/${step.id}">Delete...</a></li>
+                                <li><a href="/steps/disable/${step.id}">Disable step</a></li>
                             </ul>
                         </div>
                     </div>

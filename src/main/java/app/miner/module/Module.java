@@ -21,9 +21,9 @@ public class Module {
 		return getProperty(KEY);
 	}
 
-	public Module(JSONObject jsonConfig, ModuleType m) {
+	public Module(JSONObject jsonConfig) {
 		config = jsonConfig;//TODO check this
-		this.moduleType = m;
+		moduleType = ModuleType.valueOf(jsonConfig.get("type").toString().toUpperCase());
 	}
 
 	public String getProperty(String key) {

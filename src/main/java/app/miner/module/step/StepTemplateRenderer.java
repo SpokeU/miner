@@ -1,6 +1,7 @@
 package app.miner.module.step;
 
 import app.miner.api.StepConfigurator;
+import app.miner.module.Modules;
 import org.javalite.activeweb.Configuration;
 import org.javalite.activeweb.TemplateManager;
 import org.javalite.common.Inflector;
@@ -40,7 +41,7 @@ public class StepTemplateRenderer {
 
     // TODO implement from config
     private String getTemplateName(String viewType, String stepKey) {
-        String templatePath = "/steps/" + Inflector.camelize(stepKey, false) + "/" + viewType;
+        String templatePath = Modules.forKey(stepKey).getProperty(viewType + "_template");
         return templatePath;
     }
 

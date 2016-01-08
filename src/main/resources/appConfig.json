@@ -1,11 +1,17 @@
 {
-  "steps": [
+  "modules": [
     {
+      "type":"step",
       "key": "get_page",
-      "name": "Get page"
-      "processor_class": "app.miner.module.step.processors.GetPage"
+      "name": "Get page",
+      "processor_class": "app.miner.module.step.processors.GetPage",
+      "configurator_class": "app.miner.module.step.configurators.GetPageConfigurator",
+      "view_template": "/steps/get_page/view.ftl",
+      "edit_template": "/steps/get_page/edit.ftl",
+      "create_template": "/steps/get_page/create.ftl"
     },
     {
+      "type":"step",
       "key":"element_iterator",
       "name":"Element Iterator"
     }

@@ -77,16 +77,30 @@ html, body {
 	display: block;
 }
 
-.jobs_table_header {
+.jobs-table-header {
 	font-size: 15px;
 }
 
-.jobs_table_name {
+.jobs-table-name {
 	font-size: 15px;
 }
 
-.jobs_table_steps {
+.jobs-table-steps {
 	font-size: 15px;
+}
+
+/*============= STEPS ===========*/
+
+.step-table-name{
+	width: 40%;
+}
+
+.step-table-description{
+	width: 50%;
+}
+
+.step-table-edit{
+	width: 10%;
 }
 
 /*============= Admin nav ===========*/
