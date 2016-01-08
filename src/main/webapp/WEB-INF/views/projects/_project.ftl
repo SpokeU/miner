@@ -13,7 +13,7 @@
             <div class="dropdown pull-right">
                 <a class="dropdown-toggle" type="button" href="dropdownMenu1" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="true">
-                    <span class="glyphicon glyphicon-cog" aria-hidden="true">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"/>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="/projects/editProject/${project.id}">Edit settings</a></li>
@@ -23,8 +23,8 @@
                     <li><a href="#">Separated link</a></li>
                 </ul>
             </div>
-
         </div>
+
     </div>
 
     <div class="collapse" id="project-${project.id}">

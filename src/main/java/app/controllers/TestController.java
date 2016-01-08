@@ -20,8 +20,6 @@ import app.miner.models.Job;
 import app.miner.models.Project;
 import app.miner.models.Step;
 import app.miner.models.StepConfiguration;
-import app.miner.module.ModuleType;
-import app.miner.module.Properties;
 import app.miner.plugin.Plugins;
 import app.miner.plugin.SimplePluginManager;
 
@@ -62,8 +60,8 @@ public class TestController extends AppController {
 
     @GET
     public void testQuery(){
-        List<Step> steps = Step.where(Step.parse_job_id + " = ? order by step_order", 1L).include(StepConfiguration.class);
-        System.out.println(Step.where(Step.parse_job_id + " = ? order by step_order", 1L).include(StepConfiguration.class).toSql());
+        List<Step> steps = Step.where(Step.job_id + " = ? order by step_order", 1L).include(StepConfiguration.class);
+        System.out.println(Step.where(Step.job_id + " = ? order by step_order", 1L).include(StepConfiguration.class).toSql());
         System.out.println(Project.where("id = ?", 1L).include(Job.class));
     }
 

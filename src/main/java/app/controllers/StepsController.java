@@ -46,7 +46,7 @@ public class StepsController extends AppController{
     @POST
     public void saveStepConfiguration() throws Exception{
         Map<String, String[]> stepForm = params();
-        Step.saveStep(stepForm);
+        Step.createStep(stepForm);
 
     	//transform map to List<StepConfiguration>
     }
